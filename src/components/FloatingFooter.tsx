@@ -12,7 +12,7 @@ const FloatingFooter = () => {
 
   const whatsappNumber = "3177694172";
   const facebookUrl = "https://www.facebook.com/saboreospizza";
-  const instagramUrl = "https://www.instagram.com/saboreospizza";
+  const instagramUrl = "https://www.instagram.com/saboreospizza/";
 
   const switchOptions = () => {
     setMenuOptions(!menuOption);

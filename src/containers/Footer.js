@@ -11,7 +11,6 @@ const Footer = () => {
   const menuRef = useRef(null);
   const flechaRef = useRef(null);
 
-
   const switchOptions = () => {
     setMenuOptions(!menuOption);
   };
@@ -24,7 +23,6 @@ const Footer = () => {
   useEffect(() => {
     // Solo ejecutar lógica del browser después de la hidratación
     if (!isClient) return;
-
 
     // Función para cerrar el menú cuando se hace clic fuera
     const handleClickOutside = (event) => {
@@ -77,7 +75,7 @@ const Footer = () => {
           ref={menuRef}
           className={`${styles.redes} ${
             menuOption ? styles.open : styles.closed
-          }`}
+          } `}
         >
           <ul>
             <li>
