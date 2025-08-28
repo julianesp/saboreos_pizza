@@ -94,7 +94,7 @@ export default function ImageSlider({
           {/* Navigation arrows */}
           <button
             onClick={goToPrevious}
-            className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 hover:bg-opacity-70 text-white p-2 rounded-full transition-all duration-200 z-10"
+            className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 hover:bg-opacity-70 text-white p-2 rounded-full transition-all duration-200 z-10 cursor-pointer"
             aria-label="Previous image"
           >
             <ChevronLeft className="h-6 w-6" />
@@ -102,7 +102,7 @@ export default function ImageSlider({
           
           <button
             onClick={goToNext}
-            className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 hover:bg-opacity-70 text-white p-2 rounded-full transition-all duration-200 z-10"
+            className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 hover:bg-opacity-70 text-white p-2 rounded-full transition-all duration-200 z-10 cursor-pointer"
             aria-label="Next image"
           >
             <ChevronRight className="h-6 w-6" />
@@ -123,7 +123,7 @@ export default function ImageSlider({
                 setCurrentIndex(index);
                 pauseAutoplay();
               }}
-              className={`w-3 h-3 rounded-full transition-colors ${
+              className={`w-3 h-3 rounded-full transition-colors cursor-pointer ${
                 index === currentIndex 
                   ? 'bg-emerald-600' 
                   : 'bg-gray-300 hover:bg-gray-400'

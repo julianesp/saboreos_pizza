@@ -2,13 +2,15 @@
 
 import React, { useState, useRef, useEffect } from "react";
 import Link from "next/link";
-import { MessageCircle, Facebook, Instagram, Phone, Share2 } from 'lucide-react';
+import { MessageCircle, Facebook, Instagram, Phone } from 'lucide-react';
 
 const FloatingFooter = () => {
   const [menuOption, setMenuOptions] = useState(false);
   const [isClient, setIsClient] = useState(false);
+  const [showPulse, setShowPulse] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
   const flechaRef = useRef<HTMLButtonElement>(null);
+  const pulseTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const whatsappNumber = "3177694172";
   const facebookUrl = "https://www.facebook.com/saboreospizza";
@@ -21,6 +23,30 @@ const FloatingFooter = () => {
   useEffect(() => {
     setIsClient(true);
   }, []);
+
+  // Control de pulsaciones
+  useEffect(() => {
+    if (!isClient) return;
+
+    const startPulseAnimation = () => {
+      setShowPulse(true);
+      pulseTimeoutRef.current = setTimeout(() => {
+        setShowPulse(false);
+      }, 2000); // Mostrar pulsación por 2 segundos
+    };
+
+    // Iniciar inmediatamente y repetir cada 10 segundos
+    startPulseAnimation(); // Primera pulsación inmediata
+    const interval = setInterval(startPulseAnimation, 10000); // Repetir cada 10 segundos
+
+    return () => {
+      clearInterval(interval);
+      const currentTimeout = pulseTimeoutRef.current;
+      if (currentTimeout) {
+        clearTimeout(currentTimeout);
+      }
+    };
+  }, [isClient]);
 
   useEffect(() => {
     if (!isClient) return;
@@ -45,8 +71,18 @@ const FloatingFooter = () => {
     };
   }, [isClient]);
 
+  // Limpiar timeouts al desmontar
+  useEffect(() => {
+    return () => {
+      const currentTimeout = pulseTimeoutRef.current;
+      if (currentTimeout) {
+        clearTimeout(currentTimeout);
+      }
+    };
+  }, []);
+
   const createWhatsAppMessage = () => {
-    const message = "¡Hola! Me gustaría hacer un pedido de pizza. ¿Podrían ayudarme?";
+    const message = "¡Hola! Me gustaría hacer un pedido de pizza.";
     return `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
   };
 
@@ -56,13 +92,26 @@ const FloatingFooter = () => {
       <button 
         ref={flechaRef} 
         onClick={switchOptions}
-        className="fixed bottom-4 left-4 w-14 h-14 bg-emerald-600 hover:bg-emerald-700 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 z-50 flex items-center justify-center group"
+        className="fixed bottom-4 left-4 w-14 h-14 bg-emerald-600 hover:bg-emerald-700 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 z-50 flex items-center justify-center group cursor-pointer"
         aria-label="Abrir redes sociales"
       >
-        <Share2 className={`h-6 w-6 transition-transform duration-300 ${menuOption ? 'rotate-45' : ''}`} />
+        <svg 
+          xmlns="http://www.w3.org/2000/svg" 
+          fill="none" 
+          viewBox="0 0 24 24" 
+          strokeWidth="1.5" 
+          stroke="currentColor" 
+          className={`h-6 w-6 transition-transform duration-300 ${menuOption ? 'rotate-45' : ''}`}
+        >
+          <path 
+            strokeLinecap="round" 
+            strokeLinejoin="round" 
+            d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" 
+          />
+        </svg>
         
         {/* Pulse animation when closed */}
-        {!menuOption && (
+        {!menuOption && showPulse && (
           <div className="absolute inset-0 rounded-full bg-emerald-600 animate-ping opacity-30"></div>
         )}
       </button>
