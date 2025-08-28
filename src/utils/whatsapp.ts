@@ -9,3 +9,8 @@ export const generalWhatsAppMessage = () => {
   const message = "¡Hola! Me gustaría hacer un pedido de pizza. ¿Podrían ayudarme?";
   return `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
 };
+
+export const createFoodMenuMessage = () => {
+  const message = "¡Hola! Me interesa ver el menú completo de comidas disponibles. ¿Podrían enviarme las opciones y precios de sus platos? 🍽️";
+  return `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+};
