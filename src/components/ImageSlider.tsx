@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import { useState, useEffect, useRef } from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
-import Image from 'next/image';
+import { useState, useEffect, useRef } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import Image from "next/image";
 
 interface ImageSliderProps {
   images: string[];
@@ -11,11 +11,11 @@ interface ImageSliderProps {
   autoplayInterval?: number;
 }
 
-export default function ImageSlider({ 
-  images, 
-  category, 
-  title, 
-  autoplayInterval = 4000 
+export default function ImageSlider({
+  images,
+  category,
+  title,
+  autoplayInterval = 4000,
 }: ImageSliderProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
@@ -23,14 +23,14 @@ export default function ImageSlider({
   const pauseTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const goToPrevious = () => {
-    setCurrentIndex((prevIndex) => 
+    setCurrentIndex((prevIndex) =>
       prevIndex === 0 ? images.length - 1 : prevIndex - 1
     );
     pauseAutoplay();
   };
 
   const goToNext = () => {
-    setCurrentIndex((prevIndex) => 
+    setCurrentIndex((prevIndex) =>
       prevIndex === images.length - 1 ? 0 : prevIndex + 1
     );
     pauseAutoplay();
@@ -38,11 +38,11 @@ export default function ImageSlider({
 
   const pauseAutoplay = () => {
     setIsAutoPlaying(false);
-    
+
     if (pauseTimeoutRef.current) {
       clearTimeout(pauseTimeoutRef.current);
     }
-    
+
     pauseTimeoutRef.current = setTimeout(() => {
       setIsAutoPlaying(true);
     }, 3000);
@@ -52,7 +52,7 @@ export default function ImageSlider({
     if (!isAutoPlaying) return;
 
     timeoutRef.current = setTimeout(() => {
-      setCurrentIndex((prevIndex) => 
+      setCurrentIndex((prevIndex) =>
         prevIndex === images.length - 1 ? 0 : prevIndex + 1
       );
     }, autoplayInterval);
@@ -76,12 +76,12 @@ export default function ImageSlider({
   }, []);
 
   return (
-    <div className="relative w-full mb-8">
+    <div className="relative w-full mb-8 mt-8 ">
       <div className="text-center mb-4">
         <h3 className="text-2xl font-bold text-gray-900 capitalize">{title}</h3>
       </div>
-      
-      <div className="relative overflow-hidden rounded-lg shadow-lg bg-white">
+
+      <div className="relative overflow-hidden rounded-lg shadow-lg bg-white ">
         <div className="relative h-64 md:h-80 lg:h-96">
           <Image
             src={`/images/${category}_${images[currentIndex]}.jpg`}
@@ -90,7 +90,7 @@ export default function ImageSlider({
             className="object-cover transition-opacity duration-300"
             priority={currentIndex === 0}
           />
-          
+
           {/* Navigation arrows */}
           <button
             onClick={goToPrevious}
@@ -99,7 +99,7 @@ export default function ImageSlider({
           >
             <ChevronLeft className="h-6 w-6" />
           </button>
-          
+
           <button
             onClick={goToNext}
             className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 hover:bg-opacity-70 text-white p-2 rounded-full transition-all duration-200 z-10 cursor-pointer"
@@ -107,13 +107,17 @@ export default function ImageSlider({
           >
             <ChevronRight className="h-6 w-6" />
           </button>
-          
+
           {/* Autoplay indicator */}
           <div className="absolute bottom-2 left-2 z-10">
-            <div className={`w-3 h-3 rounded-full ${isAutoPlaying ? 'bg-emerald-500' : 'bg-red-500'} opacity-70`}></div>
+            <div
+              className={`w-3 h-3 rounded-full ${
+                isAutoPlaying ? "bg-emerald-500" : "bg-red-500"
+              } opacity-70`}
+            ></div>
           </div>
         </div>
-        
+
         {/* Dots indicator */}
         <div className="flex justify-center space-x-2 p-4 bg-white">
           {images.map((_, index) => (
@@ -124,9 +128,9 @@ export default function ImageSlider({
                 pauseAutoplay();
               }}
               className={`w-3 h-3 rounded-full transition-colors cursor-pointer ${
-                index === currentIndex 
-                  ? 'bg-emerald-600' 
-                  : 'bg-gray-300 hover:bg-gray-400'
+                index === currentIndex
+                  ? "bg-emerald-600"
+                  : "bg-gray-300 hover:bg-gray-400"
               }`}
               aria-label={`Go to image ${index + 1}`}
             />

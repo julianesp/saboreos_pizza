@@ -1,166 +1,119 @@
 "use client";
 
-import React, { useState, useRef, useEffect } from "react";
+import React from "react";
 import Link from "next/link";
-import Image from "next/image";
-import styles from "../styles/components/Footer.module.scss";
+import { Phone, MapPin, Clock, Pizza } from "lucide-react";
+import { generalWhatsAppMessage } from "../utils/whatsapp";
 
 const Footer = () => {
-  const [menuOption, setMenuOptions] = useState(false);
-  const [isClient, setIsClient] = useState(false); // Nuevo estado para detectar hidratación
-  const menuRef = useRef(null);
-  const flechaRef = useRef(null);
-
-  const switchOptions = () => {
-    setMenuOptions(!menuOption);
-  };
-
-  // useEffect para detectar cuando el componente se hidrata en el cliente
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
-
-  useEffect(() => {
-    // Solo ejecutar lógica del browser después de la hidratación
-    if (!isClient) return;
-
-    // Función para cerrar el menú cuando se hace clic fuera
-    const handleClickOutside = (event) => {
-      if (
-        menuRef.current &&
-        !menuRef.current.contains(event.target) &&
-        flechaRef.current &&
-        !flechaRef.current.contains(event.target)
-      ) {
-        setMenuOptions(false);
-      }
-    };
-
-    document.addEventListener("mousedown", handleClickOutside);
-    document.addEventListener("touchstart", handleClickOutside);
-
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-      document.removeEventListener("touchstart", handleClickOutside);
-    };
-  }, [isClient]); // Dependencia del estado isClient
-
   return (
-    <footer className={styles.footer}>
-      <button ref={flechaRef} className={styles.flecha} onClick={switchOptions}>
-        <Image
-          alt="Links to navigation"
-          src="https://firebasestorage.googleapis.com/v0/b/neuraidev.appspot.com/o/images%2Fnext.png?alt=media&token=e66ac434-3360-4247-b1e1-aaf095c30a57"
-          priority
-          width={30}
-          height={30}
-        />
-      </button>
+    <footer
+      id="contacto"
+      className="bg-gray-800 text-white py-16 px-4 sm:px-6 lg:px-8"
+    >
+      <div className="max-w-6xl mx-auto">
+        {/* Header Section */}
+        <div className="mb-8">
+          <div className="flex items-center space-x-2 mb-4">
+            <Pizza className="h-8 w-8 text-emerald-400" />
+            <h3 className="text-2xl font-bold">Saboreos Pizza</h3>
+          </div>
+          <p className="text-white mb-4">
+            El sabor único del Putumayo en cada bocado. Preparamos pizzas
+            artesanales con salsa de la casa, masa casera y queso de la región,
+            acompañadas de una gran variedad de ingredientes frescos. Además,
+            disfruta de lasaña, hamburguesas, salchipapas, sándwich cubano,
+            mazorcadas, alitas, platos a la carta y recetas tradicionales por
+            encargo. También atendemos recepciones y pedidos especiales.
+          </p>
+          <p className="text-white">
+            👉 En Saboreos, cada plato es una experiencia que combina tradición
+            y sabor auténtico.
+          </p>
+        </div>
 
-      <article className={`${styles.description}`}>
-        <Link href="/">
-          <Image
-            src="https://firebasestorage.googleapis.com/v0/b/neuraidev.appspot.com/o/images%2Flogo.png?alt=media&token=96ed73e2-f6fd-4daf-ad5d-4cb0690aa9fb"
-            alt="neurai.dev"
-            width={100}
-            height={100}
-            className="rounded-full object-cover"
-          />
-        </Link>
-      </article>
+        {/* Info Sections - Responsive Grid */}
+        <div className="grid grid-cols-1 gap-8 max-[425px]:grid-cols-2 max-[425px]:grid-rows-2 min-[426px]:grid-cols-2 lg:grid-cols-3">
+          {/* Contacto - Mobile: Top Left, Desktop: Column 1 */}
+          <div className="max-[425px]:col-start-1 max-[425px]:row-start-1">
+            <h4 className="text-lg font-bold mb-4">Contacto</h4>
+            <div className="space-y-3">
+              <div className="flex items-center space-x-2">
+                <Phone className="h-5 w-5 text-emerald-400" />
+                <Link
+                  href="tel:+573123946614"
+                  className="text-gray-300 hover:text-emerald-400 transition-colors font-medium px-3 py-1 rounded bg-emerald-700/20"
+                >
+                  312-394-6614
+                </Link>
+              </div>
 
-      {/* Redes Sociales Flotantes - Solo se renderiza después de hidratación */}
-      {isClient && (
-        <article
-          ref={menuRef}
-          className={`${styles.redes} ${
-            menuOption ? styles.open : styles.closed
-          } `}
-        >
-          <ul>
-            <li>
+              <div className="flex items-start space-x-2">
+                <Clock className="h-5 w-5 text-emerald-400" />
+                <span className="text-gray-300">
+                  Martes-Domingo: 04:00 p.m - 11:00 p.m
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div className="max-[425px]:col-start-2 max-[425px]:row-start-1">
+            <h4 className="text-lg font-bold mb-4">Síguenos</h4>
+            <div className="space-y-2">
               <Link
-                href="https://www.facebook.com/profile.php?id=100085485673809"
+                href="https://www.facebook.com/saboreospizza"
+                className="block text-gray-300 hover:text-emerald-400 transition-colors"
                 target="_blank"
-                rel="noreferrer"
               >
-                <Image
-                  alt="Facebook"
-                  src="https://firebasestorage.googleapis.com/v0/b/neuraidev.appspot.com/o/images%2Fsocialmedia%2Ffacebook.png?alt=media&token=e719a37e-cb63-45ea-8535-ca23b6bdba35"
-                  width={40}
-                  height={40}
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  priority={false} // Solo true para imágenes above-the-fold
-                  loading="lazy"
-                  quality={85} // Reduce de 100 a 85
-                  placeholder="blur"
-                  blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R+MTMftoJJoNY6mHQvGgBFO15tquD7xZg="
-                />
+                Facebook
               </Link>
-            </li>
-            <li>
+
               <Link
-                href="https://www.instagram.com/julianrio95/"
+                href="https://www.instagram.com/saboreospizza/"
                 target="_blank"
-                rel="noreferrer"
+                className="block text-gray-300 hover:text-emerald-400 transition-colors"
               >
-                <Image
-                  alt="Instagram"
-                  src="https://firebasestorage.googleapis.com/v0/b/neuraidev.appspot.com/o/images%2Fsocialmedia%2Finstagram.png?alt=media&token=dd5ed25b-1b37-4eaa-9467-a127ce8124b2"
-                  width={40}
-                  height={40}
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  priority={false} // Solo true para imágenes above-the-fold
-                  loading="lazy"
-                  quality={85} // Reduce de 100 a 85
-                  placeholder="blur"
-                  blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R+MTMftoJJoNY6mHQvGgBFO15tquD7xZg="
-                />
+                Instagram
               </Link>
-            </li>
-            <li>
+
               <Link
-                href="https://wa.me/573174503604"
+                href={generalWhatsAppMessage()}
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
+                className="block text-gray-300 hover:text-emerald-400 transition-colors"
               >
-                <Image
-                  alt="Whatsapp"
-                  src="https://firebasestorage.googleapis.com/v0/b/neuraidev.appspot.com/o/images%2Fsocialmedia%2Fsocial.png?alt=media&token=8b2f56eb-ce82-412c-b883-f088a9bfa752"
-                  width={40}
-                  height={40}
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  priority={false} // Solo true para imágenes above-the-fold
-                  loading="lazy"
-                  quality={85} // Reduce de 100 a 85
-                  placeholder="blur"
-                  blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R+MTMftoJJoNY6mHQvGgBFO15tquD7xZg="
-                />
+                WhatsApp
               </Link>
-            </li>
-            <li className={styles.tiktok}>
-              <Link
-                href="https://www.tiktok.com/@julii1295?_t=8n2OQ52Q4aD&_r=1"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <Image
-                  alt="TikTok"
-                  src="https://firebasestorage.googleapis.com/v0/b/neuraidev.appspot.com/o/images%2Fsocialmedia%2Ftik-tok.png?alt=media&token=421205be-9170-4b4c-b873-04f63c9d727f"
-                  width={40}
-                  height={40}
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  priority={false} // Solo true para imágenes above-the-fold
-                  loading="lazy"
-                  quality={85} // Reduce de 100 a 85
-                  placeholder="blur"
-                  blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R+MTMftoJJoNY6mHQvGgBFO15tquD7xZg="
-                />
-              </Link>
-            </li>
-          </ul>
-        </article>
-      )}
+            </div>
+          </div>
+
+          {/* Visítanos - Mobile: Bottom (spans both columns), Desktop: Column 3 */}
+          <div className="max-[425px]:col-span-2 max-[425px]:row-start-2">
+            <h4 className="text-lg font-bold mb-4">Visítanos</h4>
+            <div className="space-y-4">
+              <div className="flex flex-col space-y-1">
+                <div className="flex items-center space-x-2">
+                  <MapPin className="h-5 w-5 text-emerald-400" />
+                  <span className="text-gray-300">Colón, Barrio Porvenir</span>
+                </div>
+                <span className="text-gray-300 ml-7">Calle 2 # 6 - 15</span>
+              </div>
+
+              <div className="flex flex-col space-y-1">
+                <div className="flex items-center space-x-2">
+                  <MapPin className="h-5 w-5 text-emerald-400" />
+                  <span className="text-gray-300">
+                    Sibundoy, Barrio Castelvi
+                  </span>
+                </div>
+                <span className="text-gray-300 ml-7">
+                  Al lado de Comfamiliar
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </footer>
   );
 };
