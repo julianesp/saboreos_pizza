@@ -202,7 +202,6 @@ export default function Home() {
               <h3 className="text-3xl font-bold text-gray-900 mb-4">
                 🏆 La Más Pedida
               </h3>
-              <p className="text-gray-600">{mostPopular.orders}</p>
             </div>
 
             <div className="bg-gradient-to-r from-emerald-100 to-green-100 rounded-2xl p-8 max-w-4xl mx-auto">
