@@ -12,7 +12,7 @@ const FloatingFooter = () => {
   const flechaRef = useRef<HTMLButtonElement>(null);
   const pulseTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
-  const whatsappNumber = "3177694172";
+  const whatsappNumber = "3123946614";
   const facebookUrl = "https://www.facebook.com/saboreospizza";
   const instagramUrl = "https://www.instagram.com/saboreospizza/";
 

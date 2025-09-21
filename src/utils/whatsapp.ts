@@ -1,4 +1,4 @@
-const whatsappNumber = "3177694172";
+const whatsappNumber = "3123946614";
 
 export const createWhatsAppMessage = (pizzaName: string, price: string) => {
   const message = `¡Hola! Me interesa ordenar una pizza *${pizzaName}* (${price}). ¿Podrían ayudarme con el pedido?`;

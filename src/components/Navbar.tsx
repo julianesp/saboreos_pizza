@@ -1,17 +1,69 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { generalWhatsAppMessage } from "../utils/whatsapp";
 import Link from "next/link";
+import styles from "../styles/NavBar.module.scss";
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const navRef = useRef<HTMLDivElement>(null);
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
+
+  // Cerrar menú al hacer clic fuera
+  // useEffect(() => {
+  //   const handleClickOutside = (event: MouseEvent | ToggleEvent) => {
+  //     if (navRef.current && !navRef.current.contains(event.target as Node)) {
+  //       setIsMobileMenuOpen(false);
+  //     }
+  //   };
+
+  //   if (isMobileMenuOpen) {
+  //     document.addEventListener("mousedown", handleClickOutside);
+  //     document.addEventListener("touchstart", handleClickOutside);
+  //   }
+
+  //   return () => {
+  //     document.removeEventListener("mousedown", handleClickOutside);
+  //     document.removeEventListener("touchstart", handleClickOutside);
+  //   };
+  // }, [isMobileMenuOpen]);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent | TouchEvent) => {
+      if (navRef.current && !navRef.current.contains(event.target as Node)) {
+        setIsMobileMenuOpen(false);
+      }
+    };
+
+    if (isMobileMenuOpen) {
+      document.addEventListener(
+        "mousedown",
+        handleClickOutside as EventListener
+      );
+      document.addEventListener(
+        "touchstart",
+        handleClickOutside as EventListener
+      );
+    }
+
+    return () => {
+      document.removeEventListener(
+        "mousedown",
+        handleClickOutside as EventListener
+      );
+      document.removeEventListener(
+        "touchstart",
+        handleClickOutside as EventListener
+      );
+    };
+  }, [isMobileMenuOpen]);
+
   const handleSmoothScroll = (
     e: React.MouseEvent<HTMLAnchorElement>,
     targetId: string
@@ -53,17 +105,19 @@ const Navbar = () => {
     }
   };
   return (
-    <nav className="bg-white shadow-lg top-0 z-10 relative">
-      {/* circulo para flecha despliega links */}
-      {/* <div className="w-12 h-12 bg-white absolute left-1/2 top-12 transform -translate-x-1/2 -translate-y-1/2 flex items-center justify-center rounded-full"></div> */}
+    <nav
+      ref={navRef}
+      className={`top-0 z-50 fixed w-full h-14 backdrop-blur-md bg-white/60 ${styles.navbar}`}
+    >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-10">
-        <div className="flex justify-items items-center h-16 max-[425px]:justify-center max-[425px]:relative">
+        <div className={`flex justify-items items-center h-16 max-[768px]:justify-center max-[768px]:relative ${styles.navContainer}`}>
           {/* Mobile Layout: Saboreos - Logo - Pizza */}
-          <div className="hidden max-[425px]:grid max-[425px]:grid-cols-3 max-[425px]:w-full max-[425px]:items-center">
-            <h1 className="text-xl font-bold text-gray-900 max-[425px]:text-center">
+          <div className="hidden max-[768px]:grid max-[768px]:grid-cols-3 max-[768px]:w-full max-[768px]:items-center">
+            <h1 className="text-xl font-bold text-gray-900 max-[768px]:text-center">
               Saboreos
             </h1>
-            <div className="max-[425px]:flex max-[425px]:flex-col max-[425px]:items-center max-[425px]:relative mt-12">
+
+            <div className="max-[768px]:flex max-[768px]:flex-col max-[768px]:items-center max-[768px]:relative mt-6">
               <Image
                 src="https://ipbxcphqipulqm7d.public.blob.vercel-storage.com/images/logo_saboreos.png"
                 alt="logo"
@@ -71,27 +125,32 @@ const Navbar = () => {
                 height={50}
                 className="rounded-full bg-white transition-transform duration-700 ease-in-out hover:rotate-[360deg]"
               />
-              {/* Arrow Button for Mobile Menu */}
-              <button
-                onClick={toggleMobileMenu}
-                className="max-[425px]:block hidden p-1 mb-2 rounded-full hover:bg-gray-100 transition-colors"
-                aria-label="Toggle mobile menu"
-              >
-                {isMobileMenuOpen ? (
-                  <ChevronUp className="h-4 w-4 text-gray-600" />
-                ) : (
-                  <ChevronDown className="h-4 w-4 text-gray-600" />
-                )}
-              </button>
+
+              {/* Flecha para desplegar el menú móvil */}
+              <div className="max-[768px]:block hidden relative">
+                {/* Semicircular background */}
+                <div className="absolute top-1 left-1/2 transform -translate-x-1/2 w-12 h-6 bg-white/100 backdrop-blur-sm rounded-b-full border-b border-l border-r border-gray-200 shadow-sm"></div>
+                <button
+                  onClick={toggleMobileMenu}
+                  className="relative z-10 p-2 rounded-full hover:bg-gray-100/50 transition-all duration-200 hover:scale-110"
+                  aria-label="Toggle mobile menu"
+                >
+                  {isMobileMenuOpen ? (
+                    <ChevronUp className="h-4 w-4 text-gray-700" />
+                  ) : (
+                    <ChevronDown className="h-4 w-4 text-gray-700" />
+                  )}
+                </button>
+              </div>
             </div>
-            <h1 className="text-xl font-bold text-gray-900 max-[425px]:text-center">
+
+            <h1 className="text-xl font-bold text-gray-900 max-[768px]:text-center">
               Pizza
             </h1>
-            c{" "}
           </div>
 
-          {/* Desktop Layout: Logo + Full Text */}
-          <div className="flex items-center space-x-2 max-[425px]:hidden">
+          {/* Desktop Layout: Logo + Full Text a la izquierda */}
+          <div className={`flex items-center space-x-2 max-[768px]:hidden min-[769px]:max-[1023px]:justify-center min-[769px]:max-[1023px]:w-full ${styles.logoSection}`}>
             <Image
               src="https://ipbxcphqipulqm7d.public.blob.vercel-storage.com/images/logo_saboreos.png"
               alt="logo"
@@ -102,23 +161,25 @@ const Navbar = () => {
             {/* gotas de queso */}
             <span
               className="
-    absolute left-1/2 top-full h-3 w-2 
-    rounded-full bg-yellow-400 opacity-0 
+    absolute left-1/2 top-full h-3 w-2
+    rounded-full bg-yellow-400 opacity-0
     group-hover:opacity-100 group-hover:animate-bounce
     -translate-x-1/2
   "
             />
             <span
               className="
-    absolute left-1/3 top-full h-2 w-1.5 
-    rounded-full bg-yellow-300 opacity-0 
+    absolute left-1/3 top-full h-2 w-1.5
+    rounded-full bg-yellow-300 opacity-0
     group-hover:opacity-100 group-hover:animate-bounce
     -translate-x-1/2 delay-150
   "
             />
             <h1 className="text-2xl font-bold text-gray-900">Saboreos Pizza</h1>
           </div>
-          <div className="hidden md:flex items-center space-x-6">
+
+          {/* Navigation Links a la derecha */}
+          <div className={`hidden min-[769px]:flex items-center space-x-6 min-[769px]:max-[1023px]:hidden ${styles.navigationLinks}`}>
             <a
               href="#inicio"
               onClick={(e) => handleSmoothScroll(e, "inicio")}
@@ -154,7 +215,7 @@ const Navbar = () => {
 
       {/* Mobile Dropdown Menu - Absolute Overlay */}
       <div
-        className={`max-[425px]:block hidden absolute top-full left-0 right-0 z-40 transition-all duration-300 ease-in-out mt-8 ${
+        className={`max-[768px]:block hidden absolute top-full left-0 right-0 z-30 transition-all duration-300 ease-in-out mt-8 ${
           isMobileMenuOpen
             ? "opacity-100 translate-y-0"
             : "opacity-0 -translate-y-2 pointer-events-none"
