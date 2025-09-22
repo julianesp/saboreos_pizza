@@ -65,11 +65,11 @@ const pizzaOfTheDay = {
 };
 
 const specialOffer = {
-  name: "Meat Lovers Deluxe",
+  name: "Pizza Familiar",
   description:
-    "Pepperoni, salchicha italiana, jamón, tocino y chorizo con doble queso mozzarella",
-  price: "$28.990",
-  originalPrice: "$34.990",
+    "Perfecta para compartir en familia o con amigos. Ingredientes frescos y una masa artesanal que te encantará.",
+  price: "$55.000",
+  // originalPrice: "$34.990",
   image:
     "https://ipbxcphqipulqm7d.public.blob.vercel-storage.com/images/pizzas/pizza_mega.jpg",
   discount: "18% OFF",
@@ -202,7 +202,7 @@ export default function Home() {
               <h3 className="text-3xl font-bold text-gray-900 mb-4">
                 🏆 La Más Pedida
               </h3>
-              <p className="text-gray-600">{mostPopular.orders}</p>
+              {/* <p className="text-gray-600">{mostPopular.orders ?? ""}</p> */}
             </div>
 
             <div className="bg-gradient-to-r from-emerald-100 to-green-100 rounded-2xl p-8 max-w-4xl mx-auto">
@@ -225,7 +225,8 @@ export default function Home() {
                   <span
                     className="text-4xl font-bold text-yellow-400"
                     style={{
-                      textShadow: "0 0 2px #000, 0 1px 4px #000, 1px 0 2px #000",
+                      textShadow:
+                        "0 0 2px #000, 0 1px 4px #000, 1px 0 2px #000",
                     }}
                   >
                     {mostPopular.price}
@@ -277,7 +278,8 @@ export default function Home() {
                   <span
                     className="text-4xl font-bold text-yellow-400"
                     style={{
-                      textShadow: "0 0 2px #000, 0 1px 4px #000, 1px 0 2px #000",
+                      textShadow:
+                        "0 0 2px #000, 0 1px 4px #000, 1px 0 2px #000",
                     }}
                   >
                     {pizzaOfTheDay.price}
@@ -339,7 +341,8 @@ export default function Home() {
                     <span
                       className="text-4xl font-bold text-yellow-400"
                       style={{
-                        textShadow: "0 0 2px #000, 0 1px 4px #000, 1px 0 2px #000",
+                        textShadow:
+                          "0 0 2px #000, 0 1px 4px #000, 1px 0 2px #000",
                       }}
                     >
                       {specialOffer.price}
@@ -398,7 +401,8 @@ export default function Home() {
                   <span
                     className="text-4xl font-bold text-yellow-400"
                     style={{
-                      textShadow: "0 0 2px #000, 0 1px 4px #000, 1px 0 2px #000",
+                      textShadow:
+                        "0 0 2px #000, 0 1px 4px #000, 1px 0 2px #000",
                     }}
                   >
                     {chefRecommendation.price}
@@ -467,7 +471,8 @@ export default function Home() {
                     <span
                       className="text-2xl font-bold text-yellow-400"
                       style={{
-                        textShadow: "0 0 2px #000, 0 1px 4px #000, 1px 0 2px #000",
+                        textShadow:
+                          "0 0 2px #000, 0 1px 4px #000, 1px 0 2px #000",
                       }}
                     >
                       {pizza.price}
