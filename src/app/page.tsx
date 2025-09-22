@@ -8,6 +8,7 @@ import ImageSlider from "../components/ImageSlider";
 import FloatingFooter from "../components/FloatingFooter";
 import Navbar from "../components/Navbar";
 import Footer from "../containers/Footer";
+import VisitStats from "../components/VisitStats";
 import {
   createWhatsAppMessage,
   createFoodMenuMessage,
@@ -572,6 +573,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Estadísticas de Visitas */}
+      <VisitStats />
 
       {/* Información Adicional */}
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-900 text-white">
