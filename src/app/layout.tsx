@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import { SpeedInsights } from '@vercel/speed-insights/next';
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/next";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,12 +16,15 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Saboreos Pizza - Pizzas Artesanales del Putumayo",
-  description: "Las mejores pizzas artesanales de Saboreos Pizza. Ingredientes frescos, masa casera y el auténtico sabor del Putumayo. Pedidos por WhatsApp.",
-  keywords: "pizzas, artesanales, Putumayo, Saboreos, comida italiana, delivery",
+  description:
+    "Las mejores pizzas artesanales de Saboreos Pizza. Ingredientes frescos, masa casera y el auténtico sabor del Putumayo. Pedidos por WhatsApp.",
+  keywords:
+    "pizzas, artesanales, Putumayo, Saboreos, comida italiana, delivery",
   authors: [{ name: "Saboreos Pizza" }],
   openGraph: {
     title: "Saboreos Pizza - Pizzas Artesanales del Putumayo",
-    description: "Las mejores pizzas artesanales con ingredientes frescos y masa casera",
+    description:
+      "Las mejores pizzas artesanales con ingredientes frescos y masa casera",
     type: "website",
   },
 };
@@ -37,6 +41,7 @@ export default function RootLayout({
       >
         {children}
         <SpeedInsights />
+        <Analytics />
       </body>
     </html>
   );
