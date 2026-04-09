@@ -54,7 +54,7 @@ Sitio web profesional para **Saboreos Pizza**, pizzería artesanal con dos sedes
 
 ---
 
-## 📁 Estructura del proyecto
+<!-- ## 📁 Estructura del proyecto
 
 ```
 saboreos/
@@ -86,7 +86,7 @@ saboreos/
 ├── next.config.ts
 ├── tailwind.config.js
 └── tsconfig.json
-```
+``` -->
 
 ---
 
@@ -131,7 +131,7 @@ npm start
 
 ---
 
-## 🗺️ Roadmap
+<!-- ## 🗺️ Roadmap
 
 ### ✅ Fase 1 — Frontend (completada)
 - [x] Sitio web profesional y responsive
@@ -142,9 +142,9 @@ npm start
 - [x] Sedes con Google Maps
 - [x] Dark mode automático
 - [x] SEO básico + Schema.org
-- [x] PWA instalable
+- [x] PWA instalable -->
 
-### 🔜 Fase 2 — Backend (próximamente)
+<!-- ### 🔜 Fase 2 — Backend (próximamente)
 - [ ] Panel de administración con login seguro
 - [ ] Gestión dinámica del menú (agregar, editar, eliminar productos)
 - [ ] Pizza / Plato del día editable desde el panel
@@ -152,7 +152,7 @@ npm start
 - [ ] Notificaciones de pedidos con alerta sonora o correo
 - [ ] Gestión y moderación de reseñas
 - [ ] Historial de pedidos
-- [ ] Programa de fidelización (puntos por pedido)
+- [ ] Programa de fidelización (puntos por pedido) -->
 
 ---
 
