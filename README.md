@@ -7,11 +7,13 @@ Sitio web profesional para **Saboreos Pizza**, pizzería artesanal con dos sedes
 ## ✨ Funcionalidades
 
 ### 🛒 Pedidos
+
 - **Pedidos por WhatsApp** con mensajes predefinidos por producto
 - **Barra de categorías** con acceso directo a WhatsApp por tipo de comida (Pizzas, Hamburguesas, Alitas, Mazorcadas, Sándwich Cubano, Lasaña, etc.)
 - **Menú digital interactivo** con tabs por categoría, foto, descripción y precio de cada producto
 
 ### 🗺️ Información del negocio
+
 - **Dos sedes** con Google Maps embebido y coordenadas exactas
   - Sede Colón — Calle 2 # 6-15, Barrio Porvenir
   - Sede Sibundoy — Barrio Castelvi, al lado de Comfamiliar
@@ -19,6 +21,7 @@ Sitio web profesional para **Saboreos Pizza**, pizzería artesanal con dos sedes
 - Horarios, teléfono y redes sociales
 
 ### 🎨 Experiencia de usuario
+
 - **Dark mode** con animación de barrido (ola oscura de arriba a abajo / ola clara de abajo a arriba)
 - **Activación automática del modo oscuro** a partir de las 19:00 (hora de apertura)
 - **Animación de zumbido** en los elementos al navegar desde el navbar
@@ -26,11 +29,13 @@ Sitio web profesional para **Saboreos Pizza**, pizzería artesanal con dos sedes
 - Diseño **100% responsive** — móvil, tablet y desktop
 
 ### ⭐ Credibilidad
+
 - **Sección de reseñas** con testimonios de clientes y calificación promedio
 - **Galería de fotos** con sliders de pizzas, otras comidas y proceso de preparación
 - Secciones destacadas: Pizza del Día, La Más Pedida, Oferta Especial, Recomendación del Chef
 
 ### 🔍 SEO y rendimiento
+
 - **Schema.org JSON-LD** — Google reconoce el negocio como restaurante con horario, dirección y coordenadas
 - **Open Graph** — imagen y descripción al compartir el enlace en WhatsApp o redes sociales
 - **PWA instalable** — el sitio se puede instalar como app sin pasar por Google Play
@@ -41,16 +46,16 @@ Sitio web profesional para **Saboreos Pizza**, pizzería artesanal con dos sedes
 
 ## 🏗️ Stack tecnológico
 
-| Tecnología | Versión | Uso |
-|---|---|---|
-| [Next.js](https://nextjs.org) | 15.5.3 | Framework principal (App Router) |
-| [React](https://react.dev) | 19.1.0 | UI |
-| [TypeScript](https://www.typescriptlang.org) | 5 | Tipado estático |
-| [Tailwind CSS](https://tailwindcss.com) | 4 | Estilos utilitarios |
-| [Sass/SCSS](https://sass-lang.com) | 1.90 | Estilos modulares |
-| [Lucide React](https://lucide.dev) | 0.540 | Iconos |
-| [Vercel Blob](https://vercel.com/docs/storage/vercel-blob) | — | Almacenamiento de imágenes |
-| [Vercel Analytics](https://vercel.com/analytics) | — | Métricas de uso |
+| Tecnología                                                 | Versión | Uso                              |
+| ---------------------------------------------------------- | ------- | -------------------------------- |
+| [Next.js](https://nextjs.org)                              | 15.5.3  | Framework principal (App Router) |
+| [React](https://react.dev)                                 | 19.1.0  | UI                               |
+| [TypeScript](https://www.typescriptlang.org)               | 5       | Tipado estático                  |
+| [Tailwind CSS](https://tailwindcss.com)                    | 4       | Estilos utilitarios              |
+| [Sass/SCSS](https://sass-lang.com)                         | 1.90    | Estilos modulares                |
+| [Lucide React](https://lucide.dev)                         | 0.540   | Iconos                           |
+| [Vercel Blob](https://vercel.com/docs/storage/vercel-blob) | —       | Almacenamiento de imágenes       |
+| [Vercel Analytics](https://vercel.com/analytics)           | —       | Métricas de uso                  |
 
 ---
 
@@ -114,9 +119,9 @@ npm start
 
 ## 📍 Sedes
 
-| Sede | Dirección | Coordenadas |
-|---|---|---|
-| Colón | Calle 2 # 6-15, Barrio Porvenir | `1.190347, -76.970656` |
+| Sede     | Dirección                               | Coordenadas              |
+| -------- | --------------------------------------- | ------------------------ |
+| Colón    | Calle 2 # 6-15, Barrio Porvenir         | `1.190347, -76.970656`   |
 | Sibundoy | Al lado de Comfamiliar, Barrio Castelvi | `1.2052359, -76.9190961` |
 
 **Horario:** Martes a Domingo, 4:00 p.m – 11:00 p.m
@@ -156,4 +161,4 @@ npm start
 
 ---
 
-*Desarrollado con ❤️ para Saboreos Pizza — El sabor único del Putumayo*
+_Desarrollado con ❤️ para Saboreos Pizza_
