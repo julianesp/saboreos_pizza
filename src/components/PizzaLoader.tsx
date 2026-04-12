@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import "../styles/PizzaLoader.module.scss";
+import "../styles/PizzaLoader.scss";
 
 export default function PizzaLoader() {
   const [isLoading, setIsLoading] = useState(true);

@@ -134,7 +134,7 @@ const Navbar = () => {
             <div className="max-[768px]:flex max-[768px]:flex-col max-[768px]:items-center max-[768px]:relative mt-6">
               <Image
                 src="https://0dwas2ied3dcs14f.public.blob.vercel-storage.com/Business/Saboreos%20pizza/logo.jpg"
-                alt="logooooooooooo"
+                alt="logo"
                 width={50}
                 height={50}
                 className="rounded-full bg-white transition-transform duration-700 ease-in-out hover:rotate-[360deg]"
@@ -224,7 +224,11 @@ const Navbar = () => {
               aria-label="Cambiar tema"
               className="p-2 rounded-lg text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
             >
-              {theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+              {theme === "dark" ? (
+                <Sun className="h-5 w-5" />
+              ) : (
+                <Moon className="h-5 w-5" />
+              )}
             </button>
             <a
               href={generalWhatsAppMessage()}

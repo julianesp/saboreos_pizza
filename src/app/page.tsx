@@ -158,7 +158,7 @@ export default function Home() {
     <div className="min-h-screen bg-gradient-to-br from-green-50 to-emerald-50">
       {/* <AnnouncementBanner /> */}
       <Navbar />
-      <div className="pt-28">
+      <div className="pt-14">
         <MenuCategoriesBar />
       </div>
 
