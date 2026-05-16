@@ -99,20 +99,20 @@ saboreos/
 
 ```bash
 # Instalar dependencias
-npm install
+pnpm install
 
 # Servidor de desarrollo
-npm run dev
+pnpm dev
 ```
 
 Abre [http://localhost:3000](http://localhost:3000) en el navegador.
 
 ```bash
 # Build de producción
-npm run build
+pnpm build
 
 # Iniciar en producción
-npm start
+pnpm start
 ```
 
 ---

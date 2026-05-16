@@ -133,7 +133,7 @@ const Navbar = () => {
 
             <div className="max-[768px]:flex max-[768px]:flex-col max-[768px]:items-center max-[768px]:relative mt-6">
               <Image
-                src="https://0dwas2ied3dcs14f.public.blob.vercel-storage.com/Business/Saboreos%20pizza/logo.jpg"
+                src="https://media.saboreospizza.com/logo.jpg"
                 alt="logo"
                 width={50}
                 height={50}
@@ -168,7 +168,7 @@ const Navbar = () => {
             className={`flex items-center space-x-2 max-[768px]:hidden min-[769px]:max-[1023px]:justify-center min-[769px]:max-[1023px]:w-full ${styles.logoSection}`}
           >
             <Image
-              src="https://0dwas2ied3dcs14f.public.blob.vercel-storage.com/saboreos/logo.jpg"
+              src="https://media.saboreospizza.com/logo.jpg"
               alt="logo"
               width={60}
               height={60}

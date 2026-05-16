@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "https://0dwas2ied3dcs14f.public.blob.vercel-storage.com/saboreos/logo.jpg",
+        url: "https://media.saboreospizza.com/logo.jpg",
         width: 512,
         height: 512,
         alt: "Saboreos Pizza Logo",
@@ -48,8 +48,7 @@ const jsonLd = {
     "Pizzería artesanal con dos sedes en el Valle de Sibundoy, Putumayo. Pizzas artesanales, lasaña, hamburguesas, alitas, mazorcadas, sándwich cubano y platos a la carta.",
   url: "https://saboreospizza.com",
   telephone: "+573123946614",
-  image:
-    "https://0dwas2ied3dcs14f.public.blob.vercel-storage.com/saboreos/logo.jpg",
+  image: "https://media.saboreospizza.com/logo.jpg",
   servesCuisine: ["Pizza", "Italiana", "Colombiana"],
   priceRange: "$$",
   openingHours: "Tu-Su 16:00-23:00",

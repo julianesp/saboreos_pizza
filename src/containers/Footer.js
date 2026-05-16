@@ -1,8 +1,9 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import Link from "next/link";
-import { Phone, MapPin, Clock, Pizza } from "lucide-react";
+import { Phone, MapPin, Clock } from "lucide-react";
 import { generalWhatsAppMessage } from "../utils/whatsapp";
 
 const Footer = () => {
@@ -15,7 +16,13 @@ const Footer = () => {
         {/* Header Section */}
         <div className="mb-8">
           <div className="flex items-center space-x-2 mb-4">
-            <Pizza className="h-8 w-8 text-emerald-400" />
+            <Image
+              src="https://media.saboreospizza.com/logo.jpg"
+              alt="Saboreos Pizza"
+              width={40}
+              height={40}
+              className="rounded-full"
+            />
             <h3 className="text-2xl font-bold">Saboreos Pizza</h3>
           </div>
           <p className="text-white mb-4">
