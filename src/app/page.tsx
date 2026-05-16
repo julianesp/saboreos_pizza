@@ -475,7 +475,7 @@ export default function Home() {
       </section>
 
       {/* Reseñas */}
-      <ReviewsSection />
+      {/* <ReviewsSection /> */}
 
       {/* Sedes con Google Maps */}
       <LocationsSection />

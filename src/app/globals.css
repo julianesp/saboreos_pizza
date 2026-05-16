@@ -100,6 +100,10 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+a, button, [role="button"], select, label[for] {
+  cursor: pointer;
+}
+
 @keyframes buzz {
   0%   { transform: translateX(0); }
   10%  { transform: translateX(-6px) rotate(-1deg); }
