@@ -10,7 +10,20 @@ import styles from "../styles/NavBar.module.scss";
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [menuDiscovered, setMenuDiscovered] = useState(true); // true = sin pulso hasta que cargue
   const { theme, toggle } = useTheme();
+
+  useEffect(() => {
+    setMenuDiscovered(!!localStorage.getItem("saboreos-menu-discovered"));
+  }, []);
+
+  const handleMenuToggle = () => {
+    if (!menuDiscovered) {
+      setMenuDiscovered(true);
+      localStorage.setItem("saboreos-menu-discovered", "1");
+    }
+    setIsMobileMenuOpen((prev) => !prev);
+  };
   const navRef = useRef<HTMLDivElement>(null);
 
   const toggleMobileMenu = () => {
@@ -140,19 +153,28 @@ const Navbar = () => {
                 className="rounded-full bg-white transition-transform duration-700 ease-in-out hover:rotate-[360deg]"
               />
 
-              {/* Flecha para desplegar el menú móvil */}
-              <div className="max-[768px]:block hidden relative">
-                {/* Semicircular background */}
-                <div className="absolute top-1 left-1/2 transform -translate-x-1/2 w-12 h-6 bg-white/100 backdrop-blur-sm rounded-b-full border-b border-l border-r border-gray-200 shadow-sm"></div>
+              {/* Botón menú móvil */}
+              <div className="max-[768px]:block hidden mt-1">
                 <button
-                  onClick={toggleMobileMenu}
-                  className="relative z-10 p-2 rounded-full hover:bg-gray-100/50 transition-all duration-200 hover:scale-110"
+                  onClick={handleMenuToggle}
                   aria-label="Toggle mobile menu"
+                  className={`
+                    relative flex items-center gap-1.5 px-3 py-1 rounded-full
+                    text-white text-[11px] font-semibold tracking-wide
+                    shadow-lg transition-all duration-300 active:scale-95
+                    ${isMobileMenuOpen ? "bg-[#027a54]" : "bg-[#029264]"}
+                    ${!isMobileMenuOpen && !menuDiscovered ? "animate-pulse-slow" : ""}
+                  `}
                 >
+                  <span>{isMobileMenuOpen ? "Cerrar" : "Menú"}</span>
                   {isMobileMenuOpen ? (
-                    <ChevronUp className="h-4 w-4 text-gray-700" />
+                    <ChevronUp className="h-3.5 w-3.5" />
                   ) : (
-                    <ChevronDown className="h-4 w-4 text-gray-700" />
+                    <ChevronDown className="h-3.5 w-3.5" />
+                  )}
+                  {/* Halo de ping solo si el usuario aún no ha descubierto el menú */}
+                  {!isMobileMenuOpen && !menuDiscovered && (
+                    <span className="absolute inset-0 rounded-full bg-[#029264] opacity-40 animate-ping-slow" />
                   )}
                 </button>
               </div>
@@ -213,6 +235,13 @@ const Navbar = () => {
               Especialidades
             </a>
             <a
+              href="#sedes"
+              onClick={(e) => handleSmoothScroll(e, "sedes")}
+              className="text-gray-700 hover:text-emerald-600 transition-colors"
+            >
+              Sedes
+            </a>
+            <a
               href="#contacto"
               onClick={(e) => handleSmoothScroll(e, "contacto")}
               className="text-gray-700 hover:text-emerald-600 transition-colors"
@@ -242,64 +271,68 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile Dropdown Menu - Absolute Overlay */}
+      {/* Mobile Fullscreen Menu */}
       <div
-        className={`max-[768px]:block hidden absolute top-full left-0 right-0 z-30 transition-all duration-300 ease-in-out mt-8 ${
-          isMobileMenuOpen
-            ? "opacity-100 translate-y-0"
-            : "opacity-0 -translate-y-2 pointer-events-none"
-        }`}
+        className={`max-[768px]:flex hidden fixed inset-0 z-20 flex-col
+          bg-white/80 backdrop-blur-lg
+          transition-all duration-400 ease-in-out
+          ${isMobileMenuOpen
+            ? "opacity-100 pointer-events-auto"
+            : "opacity-0 pointer-events-none"
+          }`}
       >
-        <div className="flex flex-col items-center justify-center bg-white/75 backdrop-opacity-0 shadow-xl border-b  ">
-          <div className="py-6 px-6">
-            {/* First Row - Navigation Links */}
-            <div className="flex justify-center space-x-8 mb-4 ">
-              <Link
-                href="#inicio"
-                onClick={(e) => {
-                  handleSmoothScroll(e, "inicio");
-                  setIsMobileMenuOpen(false);
-                }}
-                className="text-gray-700 hover:text-emerald-600 transition-colors font-medium"
-              >
-                Inicio
-              </Link>
-              <Link
-                href="#especialidades"
-                onClick={(e) => {
-                  handleSmoothScroll(e, "especialidades");
-                  setIsMobileMenuOpen(false);
-                }}
-                className="text-gray-700 hover:text-emerald-600 transition-colors font-medium"
-              >
-                Especialidades
-              </Link>
-              <Link
-                href="#contacto"
-                onClick={(e) => {
-                  handleSmoothScroll(e, "contacto");
-                  setIsMobileMenuOpen(false);
-                }}
-                className="text-gray-700 hover:text-emerald-600 transition-colors font-medium"
-              >
-                Contacto
-              </Link>
-            </div>
+        {/* Spacer para la navbar */}
+        <div className="h-14 shrink-0" />
 
-            {/* Second Row - CTA Button */}
-            <div className="flex justify-center">
-              <Link
-                href={generalWhatsAppMessage()}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="bg-[#029264] text-white px-6 py-3 rounded-lg hover:bg-[#027a54] transition-colors font-medium shadow-lg"
-              >
-                Pedir Ahora
-              </Link>
-            </div>
-          </div>
-        </div>
+        {/* Links repartidos verticalmente */}
+        <nav className="flex flex-col flex-1 items-center justify-center gap-4 px-8 py-10">
+          {[
+            { id: "inicio",        label: "Inicio",        emoji: "🏠" },
+            { id: "especialidades",label: "Especialidades", emoji: "🍕" },
+            { id: "menu-digital",  label: "Menú Digital",  emoji: "📋" },
+            { id: "sedes",         label: "Sedes",         emoji: "📍" },
+            { id: "contacto",      label: "Contacto",      emoji: "📞" },
+          ].map(({ id, label, emoji }, i) => (
+            <Link
+              key={id}
+              href={`#${id}`}
+              onClick={(e) => {
+                handleSmoothScroll(e, id);
+                setIsMobileMenuOpen(false);
+              }}
+              style={{ transitionDelay: isMobileMenuOpen ? `${i * 60}ms` : "0ms" }}
+              className={`
+                w-full flex items-center gap-4 px-6 py-4 rounded-2xl
+                text-gray-800 font-semibold text-lg
+                border border-gray-100 shadow-sm
+                bg-white/80 hover:bg-[#029264] hover:text-white hover:border-[#029264]
+                active:scale-[0.97] transition-all duration-200
+                ${isMobileMenuOpen ? "translate-x-0 opacity-100" : "-translate-x-6 opacity-0"}
+              `}
+            >
+              <span className="text-2xl">{emoji}</span>
+              {label}
+              <ChevronDown className="ml-auto h-4 w-4 -rotate-90 opacity-40" />
+            </Link>
+          ))}
+
+          {/* CTA */}
+          <Link
+            href={generalWhatsAppMessage()}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => setIsMobileMenuOpen(false)}
+            style={{ transitionDelay: isMobileMenuOpen ? "300ms" : "0ms" }}
+            className={`
+              w-full flex items-center justify-center gap-3 px-6 py-4 rounded-2xl
+              bg-[#029264] hover:bg-[#027a54] text-white font-bold text-lg shadow-lg
+              active:scale-[0.97] transition-all duration-200
+              ${isMobileMenuOpen ? "translate-x-0 opacity-100" : "-translate-x-6 opacity-0"}
+            `}
+          >
+            🛒 Pedir Ahora
+          </Link>
+        </nav>
       </div>
     </nav>
   );
