@@ -21,10 +21,16 @@ interface PromoCarouselProps {
 
 function buildWhatsAppLink(base: string, item: PromoImage): string {
   if (!item.name) return base;
-  const text = item.price
-    ? `¡Hola! Me interesa ordenar *${item.name}* (${item.price}). ¿Podrían ayudarme con el pedido?`
-    : `¡Hola! Me interesa *${item.name}*. ¿Podrían ayudarme con el pedido?`;
-  return `${base}?text=${encodeURIComponent(text)}`;
+  const lines = [
+    `🍕 *Pedido desde Saboreos Pizza*`,
+    ``,
+    `📌 *${item.name}*`,
+  ];
+  if (item.description) lines.push(`📝 ${item.description}`);
+  if (item.price)       lines.push(`💰 Precio: *${item.price}*`);
+  if (item.src)         lines.push(``, `🔗 Ver imagen: ${item.src}`);
+  lines.push(``, `¿Pueden confirmar disponibilidad y ayudarme con el pedido? ¡Gracias!`);
+  return `${base}?text=${encodeURIComponent(lines.join("\n"))}`;
 }
 
 export default function PromoCarousel({
