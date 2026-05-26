@@ -22,6 +22,7 @@ import Link from "next/link";
 import { Clock } from "lucide-react";
 import styles from "../styles/Home.module.scss";
 import PromoCarousel from "../components/PromoCarousel";
+import MarqueeCards, { type MarqueeItem } from "../components/MarqueeCards";
 
 const featuredPizzas = [
   {
@@ -113,6 +114,56 @@ const promoImages = [
   { src: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/pizzas/19.jpeg", alt: "Saboreos Pizza 19", name: "Saboreos Signature", description: "Nuestra receta exclusiva con mezcla de salsas, tres quesos y ingredientes premium.", price: "$32.900" },
   { src: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/pizzas/20.jpeg", alt: "Saboreos Pizza 20", name: "Pizza Tocineta", description: "Tocineta crocante, queso gouda y cebolla caramelizada sobre base de crema.", price: "$24.900" },
   { src: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/pizzas/21.jpeg", alt: "Saboreos Pizza 21", name: "Pizza Mixta", description: "Mitad clásica, mitad tu favorita. Disfruta lo mejor de dos mundos en una sola pizza.", price: "$26.900" },
+];
+
+// Marquee belt items
+const marqueeItems: MarqueeItem[] = [
+  {
+    label: "🏆 La Más Pedida",
+    labelColor: "text-[#029264]",
+    bg: "bg-white",
+    border: "border border-[#029264]",
+    image: "https://0dwas2ied3dcs14f.public.blob.vercel-storage.com/saboreos/preparados/comidas_1.jpg",
+    name: mostPopular.name,
+    description: mostPopular.description,
+    price: mostPopular.price,
+    whatsappHref: `https://wa.me/3123946614?text=${encodeURIComponent(`¡Hola! Me interesa ordenar una pizza *${mostPopular.name}* (${mostPopular.price}). ¿Podrían ayudarme con el pedido?`)}`,
+  },
+  {
+    label: "🌅 Pizza del Día",
+    labelColor: "text-orange-500",
+    bg: "bg-orange-50",
+    border: "border border-orange-200",
+    image: "https://0dwas2ied3dcs14f.public.blob.vercel-storage.com/saboreos/preparados/comidas_1.jpg",
+    name: pizzaOfTheDay.name,
+    description: pizzaOfTheDay.description,
+    price: pizzaOfTheDay.price,
+    whatsappHref: `https://wa.me/3123946614?text=${encodeURIComponent(`¡Hola! Me interesa ordenar una pizza *${pizzaOfTheDay.name}* (${pizzaOfTheDay.price}). ¿Podrían ayudarme con el pedido?`)}`,
+  },
+  {
+    label: "🔥 Oferta Especial",
+    labelColor: "text-red-500",
+    bg: "bg-red-50",
+    border: "border border-red-200",
+    image: "https://0dwas2ied3dcs14f.public.blob.vercel-storage.com/saboreos/preparados/comidas_1.jpg",
+    name: specialOffer.name,
+    description: specialOffer.description,
+    price: specialOffer.price,
+    whatsappHref: `https://wa.me/3123946614?text=${encodeURIComponent(`¡Hola! Me interesa ordenar una pizza *${specialOffer.name}* (${specialOffer.price}). ¿Podrían ayudarme con el pedido?`)}`,
+    badge: { text: specialOffer.discount, side: "right" },
+  },
+  {
+    label: "👨‍🍳 Chef",
+    labelColor: "text-purple-500",
+    bg: "bg-purple-50",
+    border: "border border-purple-200",
+    image: "https://0dwas2ied3dcs14f.public.blob.vercel-storage.com/saboreos/preparados/comidas_1.jpg",
+    name: chefRecommendation.name,
+    description: chefRecommendation.description,
+    price: chefRecommendation.price,
+    whatsappHref: `https://wa.me/3123946614?text=${encodeURIComponent(`¡Hola! Me interesa ordenar una pizza *${chefRecommendation.name}* (${chefRecommendation.price}). ¿Podrían ayudarme con el pedido?`)}`,
+    badge: { text: "Chef Choice", side: "left" },
+  },
 ];
 
 // Image data for sliders
@@ -217,16 +268,13 @@ export default function Home() {
           </a> */}
         </div>
 
-        <ImageSlider
-          images={imageCategories.pizza}
-          category="pizza"
-          title=""
-          autoplayInterval={4000}
-        />
-
-        
-
-        <div id="especialidades" className="flex items-center space-x-2 py-6">
+        <div id="especialidades" className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <ImageSlider
+            images={imageCategories.pizza}
+            category="pizza"
+            title="Nuestras Pizzas"
+            autoplayInterval={4000}
+          />
           <ImageSlider
             images={imageCategories.comidas}
             category="comidas"
@@ -236,180 +284,8 @@ export default function Home() {
         </div>
       </section>
 
-      <section className={`${styles.severalFoods} max-w-6xl mx-auto px-4`}>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 items-stretch">
-          {/* Pizza Más Popular */}
-          <div className="flex flex-col bg-white rounded-2xl border border-[#029264] shadow-lg p-8">
-            <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">
-              🏆 La Más Pedida
-            </h3>
-            <div className="flex flex-col items-center text-center flex-1">
-              <div className="w-40 h-40 mb-4 relative rounded-full overflow-hidden shadow-lg flex-shrink-0">
-                <Image
-                  src={mostPopular.image}
-                  alt={mostPopular.name}
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <h4 className="text-2xl font-bold text-gray-900 mb-2">
-                {mostPopular.name}
-              </h4>
-              <p className="text-gray-600 mb-4 flex-1">
-                {mostPopular.description}
-              </p>
-              <span
-                className="text-3xl font-bold text-yellow-400 mb-4"
-                style={{ textShadow: "0 0 2px #000, 0 1px 4px #000" }}
-              >
-                {mostPopular.price}
-              </span>
-              <Link
-                href={createWhatsAppMessage(
-                  mostPopular.name,
-                  mostPopular.price,
-                )}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-[#029264] text-white px-8 py-3 rounded-lg hover:bg-[#027a54] transition-colors w-full text-center"
-              >
-                Pedir por WhatsApp
-              </Link>
-            </div>
-          </div>
-
-          {/* Pizza del Día */}
-          <div className="flex flex-col bg-gradient-to-br from-orange-50 to-yellow-50 rounded-2xl border border-orange-200 shadow-lg p-8">
-            <h3 className="text-2xl font-bold text-gray-900 mb-1 text-center">
-              🌅 Pizza del Día
-            </h3>
-            <p className="text-gray-500 text-sm text-center mb-6">
-              {pizzaOfTheDay.special}
-            </p>
-            <div className="flex flex-col items-center text-center flex-1">
-              <div className="w-40 h-40 mb-4 relative rounded-full overflow-hidden shadow-lg flex-shrink-0">
-                <Image
-                  src={pizzaOfTheDay.image}
-                  alt={pizzaOfTheDay.name}
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <h4 className="text-2xl font-bold text-gray-900 mb-2">
-                {pizzaOfTheDay.name}
-              </h4>
-              <p className="text-gray-600 mb-4 flex-1">
-                {pizzaOfTheDay.description}
-              </p>
-              <span
-                className="text-3xl font-bold text-yellow-400 mb-4"
-                style={{ textShadow: "0 0 2px #000, 0 1px 4px #000" }}
-              >
-                {pizzaOfTheDay.price}
-              </span>
-              <Link
-                href={createWhatsAppMessage(
-                  pizzaOfTheDay.name,
-                  pizzaOfTheDay.price,
-                )}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-[#029264] text-white px-8 py-3 rounded-lg hover:bg-[#027a54] transition-colors w-full text-center"
-              >
-                Pedir por WhatsApp
-              </Link>
-            </div>
-          </div>
-
-          {/* Oferta Especial */}
-          <div className="flex flex-col bg-gradient-to-br from-red-50 to-pink-50 rounded-2xl border border-red-200 shadow-lg p-8 relative">
-            <div className="absolute -top-3 -right-3 bg-[#029264] text-white px-3 py-1 rounded-full font-bold text-xs rotate-12 shadow">
-              {specialOffer.discount}
-            </div>
-            <h3 className="text-2xl font-bold text-gray-900 mb-1 text-center">
-              🔥 Oferta Especial
-            </h3>
-            <p className="text-red-500 font-semibold text-sm text-center mb-6">
-              {specialOffer.discount}
-            </p>
-            <div className="flex flex-col items-center text-center flex-1">
-              <div className="w-40 h-40 mb-4 relative rounded-full overflow-hidden shadow-lg flex-shrink-0">
-                <Image
-                  src={specialOffer.image}
-                  alt={specialOffer.name}
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <h4 className="text-2xl font-bold text-gray-900 mb-2">
-                {specialOffer.name}
-              </h4>
-              <p className="text-gray-600 mb-4 flex-1">
-                {specialOffer.description}
-              </p>
-              <span
-                className="text-3xl font-bold text-yellow-400 mb-4"
-                style={{ textShadow: "0 0 2px #000, 0 1px 4px #000" }}
-              >
-                {specialOffer.price}
-              </span>
-              <Link
-                href={createWhatsAppMessage(
-                  specialOffer.name,
-                  specialOffer.price,
-                )}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-[#029264] text-white px-8 py-3 rounded-lg hover:bg-[#027a54] transition-colors w-full text-center"
-              >
-                Aprovechar Oferta
-              </Link>
-            </div>
-          </div>
-
-          {/* Recomendación del Chef */}
-          <div className="flex flex-col bg-gradient-to-br from-purple-50 to-indigo-50 rounded-2xl border border-purple-200 shadow-lg p-8 relative">
-            <div className="absolute -top-3 -left-3 bg-[#029264] text-white px-3 py-1 rounded-full font-bold text-xs shadow">
-              Chef Choice
-            </div>
-            <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">
-              👨‍🍳 Recomendación del Chef
-            </h3>
-            <div className="flex flex-col items-center text-center flex-1">
-              <div className="w-40 h-40 mb-4 relative rounded-full overflow-hidden shadow-lg flex-shrink-0">
-                <Image
-                  src={chefRecommendation.image}
-                  alt={chefRecommendation.name}
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <h4 className="text-2xl font-bold text-gray-900 mb-2">
-                {chefRecommendation.name}
-              </h4>
-              <p className="text-gray-600 mb-4 flex-1">
-                {chefRecommendation.description}
-              </p>
-              <span
-                className="text-3xl font-bold text-yellow-400 mb-4"
-                style={{ textShadow: "0 0 2px #000, 0 1px 4px #000" }}
-              >
-                {chefRecommendation.price}
-              </span>
-              <Link
-                href={createWhatsAppMessage(
-                  chefRecommendation.name,
-                  chefRecommendation.price,
-                )}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-[#029264] text-white px-8 py-3 rounded-lg hover:bg-[#027a54] transition-colors w-full text-center"
-              >
-                Pedir por WhatsApp
-              </Link>
-            </div>
-          </div>
-        </div>
+      <section className="w-full overflow-hidden bg-[#029264]/80 backdrop-blur-sm">
+        <MarqueeCards items={marqueeItems} speed={55} />
       </section>
 
       {/* Pizzas Destacadas */}
@@ -434,34 +310,31 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8 ">
+          <div className="grid md:grid-cols-3 gap-4">
             {featuredPizzas.map((pizza) => (
               <div
                 key={pizza.id}
-                className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-all hover:scale-105 duration-200 ease-in-out"
+                className="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition-all duration-200 flex items-center gap-4 p-4"
               >
-                <div className="p-6">
-                  <div className="w-48 h-48 mx-auto mb-6 relative rounded-full overflow-hidden shadow-lg">
-                    <Image
-                      src={pizza.image}
-                      alt={pizza.name}
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                  <h4 className="text-2xl font-bold text-gray-900 mb-4 text-center">
+                <div className="w-20 h-20 shrink-0 relative rounded-full overflow-hidden shadow-md">
+                  <Image
+                    src={pizza.image}
+                    alt={pizza.name}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <h4 className="text-base font-bold text-gray-900 truncate mb-1">
                     {pizza.name}
                   </h4>
-                  <p className="text-gray-600 mb-6 text-center">
+                  <p className="text-gray-500 text-xs leading-snug line-clamp-2 mb-2">
                     {pizza.description}
                   </p>
-                  <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
                     <span
-                      className="text-2xl font-bold text-yellow-400"
-                      style={{
-                        textShadow:
-                          "0 0 2px #000, 0 1px 4px #000, 1px 0 2px #000",
-                      }}
+                      className="text-lg font-extrabold text-yellow-500"
+                      style={{ textShadow: "0 1px 3px rgba(0,0,0,.25)" }}
                     >
                       {pizza.price}
                     </span>
@@ -469,9 +342,9 @@ export default function Home() {
                       href={createWhatsAppMessage(pizza.name, pizza.price)}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="bg-[#029264] text-white px-4 py-2 rounded-lg hover:bg-[#027a54] transition-colors text-sm inline-block"
+                      className="ml-auto shrink-0 bg-[#029264] text-white px-3 py-1.5 rounded-lg hover:bg-[#027a54] transition-colors text-xs font-semibold"
                     >
-                      Pedir por WhatsApp
+                      Pedir
                     </Link>
                   </div>
                 </div>
