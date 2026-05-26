@@ -48,6 +48,10 @@ const nextConfig: NextConfig = {
       {
         protocol: "https",
         hostname: "media.saboreospizza.com",
+      },
+      {
+        protocol: "https",
+        hostname: "pub-2f281a1b18194582a64434d6846baf97.r2.dev",
       }
     ],
   },

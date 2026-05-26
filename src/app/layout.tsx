@@ -5,6 +5,7 @@ import "./globals.css";
 import { Analytics } from "@vercel/analytics/next";
 import PizzaLoader from "../components/PizzaLoader";
 import ThemeProvider from "../components/ThemeProvider";
+import InstallPWA from "../components/InstallPWA";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -110,6 +111,7 @@ export default function RootLayout({
         <ThemeProvider>
           <PizzaLoader />
           {children}
+          <InstallPWA />
         </ThemeProvider>
         <SpeedInsights />
         <Analytics />

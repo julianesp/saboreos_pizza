@@ -21,6 +21,7 @@ import {
 import Link from "next/link";
 import { Clock } from "lucide-react";
 import styles from "../styles/Home.module.scss";
+import PromoCarousel from "../components/PromoCarousel";
 
 const featuredPizzas = [
   {
@@ -29,7 +30,8 @@ const featuredPizzas = [
     description:
       "Un dulce final irresistible: galletas crujientes, caramelo derretido y un toque de canela que hace cada bocado una experiencia celestial",
     price: "$18.990",
-    image: "https://0dwas2ied3dcs14f.public.blob.vercel-storage.com/saboreos/preparados/comidas_1.jpg",
+    image:
+      "https://0dwas2ied3dcs14f.public.blob.vercel-storage.com/saboreos/preparados/comidas_1.jpg",
   },
   {
     id: 2,
@@ -87,6 +89,31 @@ const chefRecommendation = {
     "https://0dwas2ied3dcs14f.public.blob.vercel-storage.com/saboreos/preparados/comidas_1.jpg",
   badge: "",
 };
+
+// Promo carousel images (R2 Cloudflare)
+const promoImages = [
+  { src: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/pizzas/1.jpeg", alt: "Saboreos Pizza 1", name: "Pizza Especial", description: "Nuestra estrella de la casa: masa artesanal, salsa secreta y los mejores ingredientes seleccionados.", price: "$24.900" },
+  { src: "https://media.saboreospizza.com/pizzas/2.jpeg", alt: "Saboreos Pizza 2", name: "Pizza Clásica", description: "La favorita de siempre. Tomate natural, mozzarella fresca y orégano sobre base crocante.", price: "$21.900" },
+  { src: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/pizzas/3.jpeg", alt: "Saboreos Pizza 3", name: "Pepperoni Premium", description: "Abundante pepperoni importado, queso mozzarella derretido y un toque de albahaca.", price: "$23.900" },
+  { src: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/pizzas/4.jpeg", alt: "Saboreos Pizza 4", name: "Hawaiana", description: "El equilibrio perfecto entre lo dulce y lo salado: jamón ahumado y piña tropical.", price: "$22.900" },
+  { src: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/pizzas/5.jpeg", alt: "Saboreos Pizza 5", name: "Cuatro Quesos", description: "Mozzarella, queso crema, gouda y parmesano. Para los amantes del queso.", price: "$25.900" },
+  { src: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/pizzas/6.jpeg", alt: "Saboreos Pizza 6", name: "Pollo BBQ", description: "Pollo a la plancha bañado en salsa BBQ casera sobre base de queso mozzarella.", price: "$24.900" },
+  { src: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/pizzas/7.jpeg", alt: "Saboreos Pizza 7", name: "Vegetariana", description: "Pimientos, champiñones, cebolla morada, aceitunas y tomate fresco. Fresca y deliciosa.", price: "$20.900" },
+  { src: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/pizzas/8.jpeg", alt: "Saboreos Pizza 8", name: "Americana", description: "Carne molida, tocineta crocante y cebolla caramelizada con doble queso.", price: "$26.900" },
+  { src: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/pizzas/9.jpeg", alt: "Saboreos Pizza 9", name: "Mediterránea", description: "Aceitunas negras, alcaparras, tomate seco y queso feta sobre salsa de tomate.", price: "$25.900" },
+  { src: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/pizzas/10.jpeg", alt: "Saboreos Pizza 10", name: "Pizza Familiar", description: "Tamaño XXL perfecta para compartir. Elige hasta 3 ingredientes favoritos.", price: "$55.000" },
+  { src: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/pizzas/11.jpeg", alt: "Saboreos Pizza 11", name: "Marinara", description: "Receta tradicional italiana con salsa de tomate artesanal, ajo y orégano fresco.", price: "$19.900" },
+  { src: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/pizzas/12.jpeg", alt: "Saboreos Pizza 12", name: "Prosciutto", description: "Jamón prosciutto importado, rúgula fresca y queso parmesano rallado al momento.", price: "$27.900" },
+  { src: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/pizzas/13.jpeg", alt: "Saboreos Pizza 13", name: "Pizza del Chef", description: "La creación semanal de nuestro chef. Ingredientes sorpresa de temporada.", price: "$28.900" },
+  { src: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/pizzas/14.jpeg", alt: "Saboreos Pizza 14", name: "Funghi", description: "Mix de champiñones salteados con ajo, tomillo y crema de queso.", price: "$23.900" },
+  { src: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/pizzas/15.jpeg", alt: "Saboreos Pizza 15", name: "Tropical Express", description: "Piña, mango, pollo y salsa agridulce. Una explosión de sabores frescos.", price: "$24.900" },
+  { src: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/pizzas/16.jpeg", alt: "Saboreos Pizza 16", name: "Napolitana", description: "Tomate napolitano, mozzarella di bufala y albahaca fresca. Simplicidad perfecta.", price: "$22.900" },
+  { src: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/pizzas/17.jpeg", alt: "Saboreos Pizza 17", name: "Texana", description: "Jalapeños, carne molida picante, queso cheddar y salsa ranchera.", price: "$25.900" },
+  { src: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/pizzas/18.jpeg", alt: "Saboreos Pizza 18", name: "Suprema", description: "Todo en una: pepperoni, pollo, jamón, champiñones y pimientos de colores.", price: "$29.900" },
+  { src: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/pizzas/19.jpeg", alt: "Saboreos Pizza 19", name: "Saboreos Signature", description: "Nuestra receta exclusiva con mezcla de salsas, tres quesos y ingredientes premium.", price: "$32.900" },
+  { src: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/pizzas/20.jpeg", alt: "Saboreos Pizza 20", name: "Pizza Tocineta", description: "Tocineta crocante, queso gouda y cebolla caramelizada sobre base de crema.", price: "$24.900" },
+  { src: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/pizzas/21.jpeg", alt: "Saboreos Pizza 21", name: "Pizza Mixta", description: "Mitad clásica, mitad tu favorita. Disfruta lo mejor de dos mundos en una sola pizza.", price: "$26.900" },
+];
 
 // Image data for sliders
 const imageCategories = {
@@ -162,14 +189,15 @@ export default function Home() {
         <MenuCategoriesBar />
       </div>
 
-      <section id="inicio" className="py-6 px-4 sm:px-6 lg:px-8">
-        <ImageSlider
-          images={imageCategories.pizza}
-          category="pizza"
-          title=""
-          autoplayInterval={4000}
+      <div className="w-full">
+        <PromoCarousel
+          images={promoImages}
+          autoplayInterval={5000}
+          whatsappBase="https://wa.me/3123946614"
         />
+      </div>
 
+      <section id="inicio" className="py-6 px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto text-center ">
           <h2 className="text-5xl font-bold text-gray-900 mb-6">
             Bienvenido a{" "}
@@ -189,6 +217,15 @@ export default function Home() {
           </a> */}
         </div>
 
+        <ImageSlider
+          images={imageCategories.pizza}
+          category="pizza"
+          title=""
+          autoplayInterval={4000}
+        />
+
+        
+
         <div id="especialidades" className="flex items-center space-x-2 py-6">
           <ImageSlider
             images={imageCategories.comidas}
@@ -201,21 +238,41 @@ export default function Home() {
 
       <section className={`${styles.severalFoods} max-w-6xl mx-auto px-4`}>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 items-stretch">
-
           {/* Pizza Más Popular */}
           <div className="flex flex-col bg-white rounded-2xl border border-[#029264] shadow-lg p-8">
-            <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">🏆 La Más Pedida</h3>
+            <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">
+              🏆 La Más Pedida
+            </h3>
             <div className="flex flex-col items-center text-center flex-1">
               <div className="w-40 h-40 mb-4 relative rounded-full overflow-hidden shadow-lg flex-shrink-0">
-                <Image src={mostPopular.image} alt={mostPopular.name} fill className="object-cover" />
+                <Image
+                  src={mostPopular.image}
+                  alt={mostPopular.name}
+                  fill
+                  className="object-cover"
+                />
               </div>
-              <h4 className="text-2xl font-bold text-gray-900 mb-2">{mostPopular.name}</h4>
-              <p className="text-gray-600 mb-4 flex-1">{mostPopular.description}</p>
-              <span className="text-3xl font-bold text-yellow-400 mb-4" style={{ textShadow: "0 0 2px #000, 0 1px 4px #000" }}>
+              <h4 className="text-2xl font-bold text-gray-900 mb-2">
+                {mostPopular.name}
+              </h4>
+              <p className="text-gray-600 mb-4 flex-1">
+                {mostPopular.description}
+              </p>
+              <span
+                className="text-3xl font-bold text-yellow-400 mb-4"
+                style={{ textShadow: "0 0 2px #000, 0 1px 4px #000" }}
+              >
                 {mostPopular.price}
               </span>
-              <Link href={createWhatsAppMessage(mostPopular.name, mostPopular.price)} target="_blank" rel="noopener noreferrer"
-                className="bg-[#029264] text-white px-8 py-3 rounded-lg hover:bg-[#027a54] transition-colors w-full text-center">
+              <Link
+                href={createWhatsAppMessage(
+                  mostPopular.name,
+                  mostPopular.price,
+                )}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-[#029264] text-white px-8 py-3 rounded-lg hover:bg-[#027a54] transition-colors w-full text-center"
+              >
                 Pedir por WhatsApp
               </Link>
             </div>
@@ -223,19 +280,42 @@ export default function Home() {
 
           {/* Pizza del Día */}
           <div className="flex flex-col bg-gradient-to-br from-orange-50 to-yellow-50 rounded-2xl border border-orange-200 shadow-lg p-8">
-            <h3 className="text-2xl font-bold text-gray-900 mb-1 text-center">🌅 Pizza del Día</h3>
-            <p className="text-gray-500 text-sm text-center mb-6">{pizzaOfTheDay.special}</p>
+            <h3 className="text-2xl font-bold text-gray-900 mb-1 text-center">
+              🌅 Pizza del Día
+            </h3>
+            <p className="text-gray-500 text-sm text-center mb-6">
+              {pizzaOfTheDay.special}
+            </p>
             <div className="flex flex-col items-center text-center flex-1">
               <div className="w-40 h-40 mb-4 relative rounded-full overflow-hidden shadow-lg flex-shrink-0">
-                <Image src={pizzaOfTheDay.image} alt={pizzaOfTheDay.name} fill className="object-cover" />
+                <Image
+                  src={pizzaOfTheDay.image}
+                  alt={pizzaOfTheDay.name}
+                  fill
+                  className="object-cover"
+                />
               </div>
-              <h4 className="text-2xl font-bold text-gray-900 mb-2">{pizzaOfTheDay.name}</h4>
-              <p className="text-gray-600 mb-4 flex-1">{pizzaOfTheDay.description}</p>
-              <span className="text-3xl font-bold text-yellow-400 mb-4" style={{ textShadow: "0 0 2px #000, 0 1px 4px #000" }}>
+              <h4 className="text-2xl font-bold text-gray-900 mb-2">
+                {pizzaOfTheDay.name}
+              </h4>
+              <p className="text-gray-600 mb-4 flex-1">
+                {pizzaOfTheDay.description}
+              </p>
+              <span
+                className="text-3xl font-bold text-yellow-400 mb-4"
+                style={{ textShadow: "0 0 2px #000, 0 1px 4px #000" }}
+              >
                 {pizzaOfTheDay.price}
               </span>
-              <Link href={createWhatsAppMessage(pizzaOfTheDay.name, pizzaOfTheDay.price)} target="_blank" rel="noopener noreferrer"
-                className="bg-[#029264] text-white px-8 py-3 rounded-lg hover:bg-[#027a54] transition-colors w-full text-center">
+              <Link
+                href={createWhatsAppMessage(
+                  pizzaOfTheDay.name,
+                  pizzaOfTheDay.price,
+                )}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-[#029264] text-white px-8 py-3 rounded-lg hover:bg-[#027a54] transition-colors w-full text-center"
+              >
                 Pedir por WhatsApp
               </Link>
             </div>
@@ -246,19 +326,42 @@ export default function Home() {
             <div className="absolute -top-3 -right-3 bg-[#029264] text-white px-3 py-1 rounded-full font-bold text-xs rotate-12 shadow">
               {specialOffer.discount}
             </div>
-            <h3 className="text-2xl font-bold text-gray-900 mb-1 text-center">🔥 Oferta Especial</h3>
-            <p className="text-red-500 font-semibold text-sm text-center mb-6">{specialOffer.discount}</p>
+            <h3 className="text-2xl font-bold text-gray-900 mb-1 text-center">
+              🔥 Oferta Especial
+            </h3>
+            <p className="text-red-500 font-semibold text-sm text-center mb-6">
+              {specialOffer.discount}
+            </p>
             <div className="flex flex-col items-center text-center flex-1">
               <div className="w-40 h-40 mb-4 relative rounded-full overflow-hidden shadow-lg flex-shrink-0">
-                <Image src={specialOffer.image} alt={specialOffer.name} fill className="object-cover" />
+                <Image
+                  src={specialOffer.image}
+                  alt={specialOffer.name}
+                  fill
+                  className="object-cover"
+                />
               </div>
-              <h4 className="text-2xl font-bold text-gray-900 mb-2">{specialOffer.name}</h4>
-              <p className="text-gray-600 mb-4 flex-1">{specialOffer.description}</p>
-              <span className="text-3xl font-bold text-yellow-400 mb-4" style={{ textShadow: "0 0 2px #000, 0 1px 4px #000" }}>
+              <h4 className="text-2xl font-bold text-gray-900 mb-2">
+                {specialOffer.name}
+              </h4>
+              <p className="text-gray-600 mb-4 flex-1">
+                {specialOffer.description}
+              </p>
+              <span
+                className="text-3xl font-bold text-yellow-400 mb-4"
+                style={{ textShadow: "0 0 2px #000, 0 1px 4px #000" }}
+              >
                 {specialOffer.price}
               </span>
-              <Link href={createWhatsAppMessage(specialOffer.name, specialOffer.price)} target="_blank" rel="noopener noreferrer"
-                className="bg-[#029264] text-white px-8 py-3 rounded-lg hover:bg-[#027a54] transition-colors w-full text-center">
+              <Link
+                href={createWhatsAppMessage(
+                  specialOffer.name,
+                  specialOffer.price,
+                )}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-[#029264] text-white px-8 py-3 rounded-lg hover:bg-[#027a54] transition-colors w-full text-center"
+              >
                 Aprovechar Oferta
               </Link>
             </div>
@@ -269,23 +372,43 @@ export default function Home() {
             <div className="absolute -top-3 -left-3 bg-[#029264] text-white px-3 py-1 rounded-full font-bold text-xs shadow">
               Chef Choice
             </div>
-            <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">👨‍🍳 Recomendación del Chef</h3>
+            <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">
+              👨‍🍳 Recomendación del Chef
+            </h3>
             <div className="flex flex-col items-center text-center flex-1">
               <div className="w-40 h-40 mb-4 relative rounded-full overflow-hidden shadow-lg flex-shrink-0">
-                <Image src={chefRecommendation.image} alt={chefRecommendation.name} fill className="object-cover" />
+                <Image
+                  src={chefRecommendation.image}
+                  alt={chefRecommendation.name}
+                  fill
+                  className="object-cover"
+                />
               </div>
-              <h4 className="text-2xl font-bold text-gray-900 mb-2">{chefRecommendation.name}</h4>
-              <p className="text-gray-600 mb-4 flex-1">{chefRecommendation.description}</p>
-              <span className="text-3xl font-bold text-yellow-400 mb-4" style={{ textShadow: "0 0 2px #000, 0 1px 4px #000" }}>
+              <h4 className="text-2xl font-bold text-gray-900 mb-2">
+                {chefRecommendation.name}
+              </h4>
+              <p className="text-gray-600 mb-4 flex-1">
+                {chefRecommendation.description}
+              </p>
+              <span
+                className="text-3xl font-bold text-yellow-400 mb-4"
+                style={{ textShadow: "0 0 2px #000, 0 1px 4px #000" }}
+              >
                 {chefRecommendation.price}
               </span>
-              <Link href={createWhatsAppMessage(chefRecommendation.name, chefRecommendation.price)} target="_blank" rel="noopener noreferrer"
-                className="bg-[#029264] text-white px-8 py-3 rounded-lg hover:bg-[#027a54] transition-colors w-full text-center">
+              <Link
+                href={createWhatsAppMessage(
+                  chefRecommendation.name,
+                  chefRecommendation.price,
+                )}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-[#029264] text-white px-8 py-3 rounded-lg hover:bg-[#027a54] transition-colors w-full text-center"
+              >
                 Pedir por WhatsApp
               </Link>
             </div>
           </div>
-
         </div>
       </section>
 
@@ -299,6 +422,7 @@ export default function Home() {
             autoplayInterval={3500}
           />
         </div>
+
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <h3 className="text-3xl font-bold text-gray-900 mb-4">
