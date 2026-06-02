@@ -20,7 +20,7 @@ export default function ImageModal({ src, alt, rounded = false, onClose }: Image
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center backdrop-blur-sm bg-black/60"
+      className="fixed inset-x-0 bottom-0 top-14 z-30 flex items-center justify-center backdrop-blur-sm bg-black/60"
       onClick={onClose}
     >
       <div
