@@ -1,8 +1,7 @@
 "use client";
 
-import { Star, Utensils, ChevronLeft, ChevronRight } from "lucide-react";
+import { Star, Utensils } from "lucide-react";
 
-import { useState } from "react";
 import Image from "next/image";
 import ImageSlider from "../components/ImageSlider";
 import FloatingFooter from "../components/FloatingFooter";
@@ -16,7 +15,7 @@ import LocationsSection from "../components/LocationsSection";
 import DigitalMenu from "../components/DigitalMenu";
 import {
   createWhatsAppMessage,
-  createFoodMenuMessage,
+  createFoodOrderMessage,
 } from "../utils/whatsapp";
 import Link from "next/link";
 import { Clock } from "lucide-react";
@@ -173,65 +172,29 @@ const imageCategories = {
   preparacion: ["1", "2", "3", "4", "5"],
 };
 
-// Food menu images data
-const foodMenuImages = [
-  {
-    id: 1,
-    url: "https://0dwas2ied3dcs14f.public.blob.vercel-storage.com/saboreos/preparados/comidas_2.jpg",
-    alt: "Menú de comidas 1",
-  },
-  {
-    id: 2,
-    url: "https://0dwas2ied3dcs14f.public.blob.vercel-storage.com/saboreos/preparados/comidas_2.jpg",
-    alt: "Menú de comidas 2",
-  },
-  {
-    id: 3,
-    url: "https://0dwas2ied3dcs14f.public.blob.vercel-storage.com/saboreos/preparados/comidas_3.jpg",
-    alt: "Menú de comidas 3",
-  },
-  {
-    id: 4,
-    url: "https://0dwas2ied3dcs14f.public.blob.vercel-storage.com/saboreos/preparados/comidas_4.jpg",
-    alt: "Menú de comidas 4",
-  },
-  {
-    id: 5,
-    url: "https://0dwas2ied3dcs14f.public.blob.vercel-storage.com/saboreos/preparados/comidas_1.jpg",
-    alt: "Menú de comidas 5",
-  },
-  {
-    id: 6,
-    url: "https://0dwas2ied3dcs14f.public.blob.vercel-storage.com/saboreos/preparados/comidas_2.jpg",
-    alt: "Menú de comidas 6",
-  },
-  {
-    id: 7,
-    url: "https://0dwas2ied3dcs14f.public.blob.vercel-storage.com/saboreos/preparados/comidas_3.jpg",
-    alt: "Menú de comidas 7",
-  },
-  {
-    id: 8,
-    url: "https://0dwas2ied3dcs14f.public.blob.vercel-storage.com/saboreos/preparados/comidas_4.jpg",
-    alt: "Menú de comidas 8",
-  },
+// Food menu items data
+const foodMenuItems = [
+  { id: 1,  name: "Clásica Saboreos",              url: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/other_foods/1.jpeg" },
+  { id: 2,  name: "Lasaña",                         url: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/other_foods/2.jpeg" },
+  { id: 4,  name: "Lasaña",                         url: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/other_foods/4.jpeg" },
+  { id: 5,  name: "Salchipapa",                     url: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/other_foods/5.jpeg" },
+  { id: 6,  name: "Salchipapa Clásica Saboreos",    url: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/other_foods/6.jpeg" },
+  { id: 7,  name: "Picada",                         url: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/other_foods/7.jpeg" },
+  { id: 8,  name: "Salchipapa Clásica Saboreos",    url: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/other_foods/8.jpeg" },
+  { id: 9,  name: "Salchipapa Clásica Saboreos",    url: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/other_foods/9.jpeg" },
+  { id: 10, name: "Alitas",                         url: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/other_foods/10.jpeg" },
+  { id: 11, name: "Lasaña",                         url: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/other_foods/11.jpeg" },
+  { id: 12, name: "Sandwich con Papa",              url: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/other_foods/12.jpeg" },
+  { id: 13, name: "Picada Carne Papa Patacón",      url: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/other_foods/13.jpeg" },
+  { id: 15, name: "Salchipapa Clásica Saboreos",    url: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/other_foods/15.jpeg" },
+  { id: 16, name: "Salchipapa",                     url: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/other_foods/16.jpeg" },
+  { id: 20, name: "Salchipapa",                     url: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/other_foods/20.jpeg" },
+  { id: 22, name: "Pechuga a la Plancha",           url: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/foods/comidas_2.jpg" },
+  { id: 23, name: "Carne de Cerdo a la Parrilla",   url: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/foods/comidas_3.jpg" },
+  { id: 24, name: "Parrilla Mixta al Carbón",       url: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/foods/comidas_4.jpg" },
 ];
 
 export default function Home() {
-  const [currentFoodIndex, setCurrentFoodIndex] = useState(0);
-
-  const nextFoodSlide = () => {
-    setCurrentFoodIndex((prevIndex) =>
-      prevIndex === foodMenuImages.length - 1 ? 0 : prevIndex + 1,
-    );
-  };
-
-  const prevFoodSlide = () => {
-    setCurrentFoodIndex((prevIndex) =>
-      prevIndex === 0 ? foodMenuImages.length - 1 : prevIndex - 1,
-    );
-  };
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 to-emerald-50">
       {/* <AnnouncementBanner /> */}
@@ -357,10 +320,10 @@ export default function Home() {
       {/* Menú Digital por Categorías */}
       <DigitalMenu />
 
-      {/* Menú de Comidas Carousel */}
+      {/* Menú de Comidas Grid */}
       <section
         id="menu-comidas"
-        className={`relative py-16 px-4 sm:px-6 lg:px-8 bg-white  `}
+        className="relative py-16 px-4 sm:px-6 lg:px-8 bg-white"
       >
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
@@ -369,69 +332,41 @@ export default function Home() {
             </h3>
             <p className="text-gray-600 max-w-2xl mx-auto">
               Descubre nuestra variedad de platos tradicionales y
-              especialidades. ¡Contacta al chef para conocer precios y
-              disponibilidad!
+              especialidades. ¡Pide directamente al chef por WhatsApp!
             </p>
           </div>
 
-          <div className="relative">
-            {/* Carousel Container */}
-            <div className="overflow-hidden rounded-xl shadow-lg bg-gray-50">
-              <div className="relative h-96 md:h-[500px]">
-                <Image
-                  src={foodMenuImages[currentFoodIndex].url}
-                  alt={foodMenuImages[currentFoodIndex].alt}
-                  fill
-                  className="object-cover transition-all duration-500 ease-in-out"
-                  priority
-                />
-
-                {/* Navigation Arrows */}
-                <button
-                  onClick={prevFoodSlide}
-                  className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 p-3 rounded-full shadow-lg transition-all duration-200 hover:scale-110"
-                  aria-label="Imagen anterior"
-                >
-                  <ChevronLeft className="h-6 w-6" />
-                </button>
-                <button
-                  onClick={nextFoodSlide}
-                  className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 p-3 rounded-full shadow-lg transition-all duration-200 hover:scale-110"
-                  aria-label="Siguiente imagen"
-                >
-                  <ChevronRight className="h-6 w-6" />
-                </button>
-
-                {/* Slide Indicators */}
-                <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
-                  {foodMenuImages.map((_, index) => (
-                    <button
-                      key={index}
-                      onClick={() => setCurrentFoodIndex(index)}
-                      className={`w-3 h-3 rounded-full transition-all duration-200 ${
-                        index === currentFoodIndex
-                          ? "bg-white scale-110"
-                          : "bg-white/60 hover:bg-white/80"
-                      }`}
-                      aria-label={`Ir a imagen ${index + 1}`}
-                    />
-                  ))}
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+            {foodMenuItems.map((item) => (
+              <div
+                key={item.id}
+                className="group rounded-xl overflow-hidden shadow-md bg-gray-50 hover:shadow-xl transition-shadow duration-300 flex flex-col"
+              >
+                <div className="relative w-full aspect-square">
+                  <Image
+                    src={item.url}
+                    alt={item.name}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-300"
+                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                  />
+                </div>
+                <div className="p-3 flex flex-col flex-1 justify-between gap-2">
+                  <p className="text-sm font-semibold text-gray-800 text-center leading-tight">
+                    {item.name}
+                  </p>
+                  <Link
+                    href={createFoodOrderMessage(item.name)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-1.5 bg-[#029264] text-white text-xs font-medium px-3 py-2 rounded-lg hover:bg-[#027a54] transition-colors duration-200"
+                  >
+                    <Utensils className="h-3.5 w-3.5" />
+                    Pedir comida
+                  </Link>
                 </div>
               </div>
-            </div>
-
-            {/* CTA Button */}
-            <div className="text-center mt-8">
-              <Link
-                href={createFoodMenuMessage()}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center bg-[#029264] text-white px-8 py-4 text-lg rounded-lg hover:bg-[#027a54] transition-all duration-200 shadow-lg hover:shadow-xl transform hover:scale-105"
-              >
-                <Utensils className="h-6 w-6 mr-2" />
-                Ver Menú Completo
-              </Link>
-            </div>
+            ))}
           </div>
         </div>
       </section>

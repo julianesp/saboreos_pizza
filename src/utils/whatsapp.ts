@@ -40,3 +40,8 @@ export const createFoodMenuMessage = () => {
   const message = "¡Hola! Me interesa ver el menú completo de comidas disponibles. ¿Podrían enviarme las opciones y precios de sus platos? 🍽️";
   return `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
 };
+
+export const createFoodOrderMessage = (foodName: string) => {
+  const message = `¡Hola! Quiero pedir 🍽️ *${foodName}*. ¿Me pueden confirmar disponibilidad y precio? ¡Gracias!`;
+  return `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+};
