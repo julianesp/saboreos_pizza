@@ -430,41 +430,40 @@ export default function Home() {
       <LocationsSection />
 
       {/* Conoce al Chef */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-10">
-            <h3 className="text-3xl font-bold text-gray-900 mb-3">
-              👨‍🍳 Conoce al Chef
-            </h3>
-            <p className="text-gray-500 text-sm">
-              La persona detrás de cada sabor
-            </p>
+      <section
+        className="py-16 px-4 sm:px-6 lg:px-8"
+        style={{ backgroundColor: "#bababa" }}
+      >
+        <div className="max-w-2xl mx-auto text-center">
+          <h3 className="text-3xl font-bold text-white mb-2">
+            👨‍🍳 Conoce al Chef
+          </h3>
+          <p className="text-white/70 text-sm mb-10">
+            La persona detrás de cada sabor
+          </p>
+
+          {/* Foto centrada */}
+          <div className="relative w-48 h-48 mx-auto rounded-full overflow-hidden shadow-xl ring-4 ring-white/20 mb-6">
+            <Image
+              src="https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/cheff.jpeg"
+              alt="Chef Saboreos Pizza"
+              fill
+              className="object-cover"
+            />
           </div>
 
-          <div className="flex flex-col md:flex-row items-center gap-8 bg-white rounded-2xl shadow-md p-8">
-            <div className="relative w-48 h-48 shrink-0 rounded-full overflow-hidden shadow-lg ring-4 ring-emerald-100">
-              <Image
-                src="https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/cheff.jpeg"
-                alt="Chef Saboreos Pizza"
-                fill
-                className="object-cover"
-              />
-            </div>
+          <h4 className="text-2xl font-bold text-white mb-1">
+            El Chef de Saboreos
+          </h4>
+          <p className="text-emerald-300 font-medium text-sm mb-6">
+            Fundador · Chef Principal · Instructor
+          </p>
 
-            <div className="flex-1 text-center md:text-left">
-              <h4 className="text-2xl font-bold text-gray-900 mb-2">
-                El Chef de Saboreos
-              </h4>
-              <p className="text-emerald-600 font-medium mb-4 text-sm">
-                Fundador · Chef Principal · Instructor
-              </p>
-              {/* Reemplaza este texto con la descripción real del chef */}
-              <p className="text-gray-600 leading-relaxed">
-                Escribe aquí la descripción del chef: su historia, su pasión
-                por la cocina, su experiencia y lo que lo hace especial.
-              </p>
-            </div>
-          </div>
+          {/* Reemplaza este texto con la descripción real del chef */}
+          <p className="text-white/80 leading-relaxed max-w-xl mx-auto">
+            Escribe aquí la descripción del chef: su historia, su pasión
+            por la cocina, su experiencia y lo que lo hace especial.
+          </p>
         </div>
       </section>
 
