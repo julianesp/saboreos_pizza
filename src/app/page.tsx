@@ -430,20 +430,17 @@ export default function Home() {
       <LocationsSection />
 
       {/* Conoce al Chef */}
-      <section
-        className="py-16 px-4 sm:px-6 lg:px-8"
-        style={{ backgroundColor: "#bababa" }}
-      >
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-800">
         <div className="max-w-2xl mx-auto text-center">
           <h3 className="text-3xl font-bold text-white mb-2">
             👨‍🍳 Conoce al Chef
           </h3>
-          <p className="text-white/70 text-sm mb-10">
+          <p className="text-white/60 text-sm mb-10">
             La persona detrás de cada sabor
           </p>
 
           {/* Foto centrada */}
-          <div className="relative w-48 h-48 mx-auto rounded-full overflow-hidden shadow-xl ring-4 ring-white/20 mb-6">
+          <div className="relative w-64 h-64 mx-auto rounded-full overflow-hidden shadow-xl ring-4 ring-white/10 mb-6">
             <Image
               src="https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/cheff.jpeg"
               alt="Chef Saboreos Pizza"
@@ -455,12 +452,12 @@ export default function Home() {
           <h4 className="text-2xl font-bold text-white mb-1">
             El Chef de Saboreos
           </h4>
-          <p className="text-emerald-300 font-medium text-sm mb-6">
+          <p className="text-emerald-400 font-medium text-sm mb-6">
             Fundador · Chef Principal · Instructor
           </p>
 
           {/* Reemplaza este texto con la descripción real del chef */}
-          <p className="text-white/80 leading-relaxed max-w-xl mx-auto">
+          <p className="text-white/70 leading-relaxed max-w-xl mx-auto">
             Escribe aquí la descripción del chef: su historia, su pasión
             por la cocina, su experiencia y lo que lo hace especial.
           </p>
