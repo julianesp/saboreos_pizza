@@ -1,8 +1,10 @@
 "use client";
 
+import { useState } from "react";
 import { MapPin, Clock, Phone } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
+import ImageModal from "./ImageModal";
 
 const locations = [
   {
@@ -36,6 +38,8 @@ const locations = [
 ];
 
 export default function LocationsSection() {
+  const [localPhotoOpen, setLocalPhotoOpen] = useState(false);
+
   return (
     <section id="sedes" className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
       <div className="max-w-6xl mx-auto">
@@ -111,14 +115,17 @@ export default function LocationsSection() {
                 </Link>
               </div>
 
-              {/* Foto del local — solo sede Colón */}
+              {/* Foto del local — solo sede Colón, clic para expandir */}
               {loc.photo && (
-                <div className="relative w-full h-48 overflow-hidden">
+                <div
+                  onClick={() => setLocalPhotoOpen(true)}
+                  className="relative w-full h-48 overflow-hidden cursor-zoom-in"
+                >
                   <Image
                     src={loc.photo}
                     alt={`Local ${loc.name}`}
                     fill
-                    className="object-cover"
+                    className="object-cover pointer-events-none hover:scale-105 transition-transform duration-300"
                   />
                 </div>
               )}
@@ -126,6 +133,14 @@ export default function LocationsSection() {
           ))}
         </div>
       </div>
+
+      {localPhotoOpen && (
+        <ImageModal
+          src="https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/5.jpeg"
+          alt="Local Sede Colón"
+          onClose={() => setLocalPhotoOpen(false)}
+        />
+      )}
     </section>
   );
 }
