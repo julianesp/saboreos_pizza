@@ -1,7 +1,8 @@
 "use client";
 
-import { Star, Utensils } from "lucide-react";
+import { Star, Utensils, X } from "lucide-react";
 
+import { useState } from "react";
 import Image from "next/image";
 import ImageSlider from "../components/ImageSlider";
 import FloatingFooter from "../components/FloatingFooter";
@@ -204,6 +205,8 @@ const foodMenuItems = [
 ];
 
 export default function Home() {
+  const [chefPhotoOpen, setChefPhotoOpen] = useState(false);
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 to-emerald-50">
       {/* <AnnouncementBanner /> */}
@@ -439,15 +442,19 @@ export default function Home() {
             La persona detrás de cada sabor
           </p>
 
-          {/* Foto centrada */}
-          <div className="relative w-64 h-64 mx-auto rounded-full overflow-hidden shadow-xl ring-4 ring-white/10 mb-6">
+          {/* Foto centrada — clic para expandir */}
+          <button
+            onClick={() => setChefPhotoOpen(true)}
+            className="relative w-64 h-64 mx-auto rounded-full overflow-hidden shadow-xl ring-4 ring-white/10 mb-6 block cursor-zoom-in hover:ring-emerald-400 transition-all duration-200"
+            aria-label="Ver foto del chef"
+          >
             <Image
               src="https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/cheff.jpeg"
               alt="Chef Saboreos Pizza"
               fill
               className="object-cover"
             />
-          </div>
+          </button>
 
           <h4 className="text-2xl font-bold text-white mb-1">
             El Chef de Saboreos
@@ -469,6 +476,33 @@ export default function Home() {
       <FloatingFooter />
 
       <ScrollToTopButton />
+
+      {/* Modal foto chef */}
+      {chefPhotoOpen && (
+        <div
+          className="fixed inset-0 z-40 flex items-center justify-center backdrop-blur-sm bg-black/60"
+          onClick={() => setChefPhotoOpen(false)}
+        >
+          <div
+            className="relative w-80 h-80 sm:w-[420px] sm:h-[420px] rounded-full overflow-hidden shadow-2xl ring-4 ring-white/20"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <Image
+              src="https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/cheff.jpeg"
+              alt="Chef Saboreos Pizza"
+              fill
+              className="object-cover"
+            />
+          </div>
+          <button
+            onClick={() => setChefPhotoOpen(false)}
+            className="absolute top-4 right-4 bg-white/10 hover:bg-white/20 text-white p-2 rounded-full transition-colors"
+            aria-label="Cerrar"
+          >
+            <X className="w-5 h-5" />
+          </button>
+        </div>
+      )}
     </div>
   );
 }
