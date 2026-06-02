@@ -84,8 +84,12 @@ export default function ImageSlider({
       <div className="relative overflow-hidden rounded-lg shadow-lg bg-white ">
         <div className="relative h-64 md:h-80 lg:h-96">
           <Image
-            src={`/images/${category}_${images[currentIndex]}.jpg`}
-            alt={`${title} ${images[currentIndex]}`}
+            src={
+              images[currentIndex].startsWith("http")
+                ? images[currentIndex]
+                : `/images/${category}_${images[currentIndex]}.jpg`
+            }
+            alt={`${title} ${currentIndex + 1}`}
             fill
             className="object-cover transition-opacity duration-300"
             priority={currentIndex === 0}

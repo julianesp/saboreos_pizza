@@ -165,6 +165,15 @@ const marqueeItems: MarqueeItem[] = [
   },
 ];
 
+// Fotos del chef enseñando a niños
+const teachingImages = [
+  "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/ense%C3%B1ando/1.jpeg",
+  "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/ense%C3%B1ando/2.jpeg",
+  "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/ense%C3%B1ando/3.jpeg",
+  "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/ense%C3%B1ando/4.jpeg",
+  "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/ense%C3%B1ando/5.jpeg",
+];
+
 // Image data for sliders
 const imageCategories = {
   pizza: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"],
@@ -255,14 +264,15 @@ export default function Home() {
       <section id="destacadas" className="py-6 px-4 sm:px-6 lg:px-8">
         <div>
           <ImageSlider
-            images={imageCategories.preparacion}
-            category="preparacion"
-            title="Mi formación"
+            images={teachingImages}
+            category="teaching"
+            title="Enseñando con sabor"
             autoplayInterval={3500}
           />
         </div>
 
         <div className="max-w-6xl mx-auto">
+          {/* Título oculto hasta que el backend de calificaciones esté listo
           <div className="text-center mb-12">
             <h3 className="text-3xl font-bold text-gray-900 mb-4">
               Pizzas Destacadas del Día
@@ -272,48 +282,55 @@ export default function Home() {
               frescos y de la más alta calidad
             </p>
           </div>
+          */}
 
-          <div className="grid md:grid-cols-3 gap-4">
-            {featuredPizzas.map((pizza) => (
-              <div
-                key={pizza.id}
-                className="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition-all duration-200 flex items-center gap-4 p-4"
-              >
-                <div className="w-20 h-20 shrink-0 relative rounded-full overflow-hidden shadow-md">
-                  <Image
-                    src={pizza.image}
-                    alt={pizza.name}
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-                <div className="flex-1 min-w-0">
-                  <h4 className="text-base font-bold text-gray-900 truncate mb-1">
-                    {pizza.name}
-                  </h4>
-                  <p className="text-gray-500 text-xs leading-snug line-clamp-2 mb-2">
-                    {pizza.description}
-                  </p>
-                  <div className="flex items-center gap-2">
-                    <span
-                      className="text-lg font-extrabold text-yellow-500"
-                      style={{ textShadow: "0 1px 3px rgba(0,0,0,.25)" }}
-                    >
-                      {pizza.price}
-                    </span>
-                    <Link
-                      href={createWhatsAppMessage(pizza.name, pizza.price)}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="ml-auto shrink-0 bg-[#029264] text-white px-3 py-1.5 rounded-lg hover:bg-[#027a54] transition-colors text-xs font-semibold"
-                    >
-                      Pedir
-                    </Link>
+          {/*
+            TODO (backend pendiente): Pizzas Destacadas del Día
+            =====================================================
+            Cuando el chef confirme implementar el backend, esta sección
+            mostrará las pizzas mejor calificadas por los usuarios.
+
+            Flujo previsto:
+            1. El usuario le da estrellas (1–5) a cada pizza.
+            2. Las calificaciones se guardan en la base de datos.
+            3. Esta sección consulta las 3 pizzas con mayor rating promedio
+               y las muestra aquí de forma dinámica.
+
+            Mientras tanto la sección está oculta para no mostrar
+            datos de ejemplo que no reflejan el menú real.
+
+            Código original de las tarjetas:
+
+            <div className="grid md:grid-cols-3 gap-4">
+              {featuredPizzas.map((pizza) => (
+                <div
+                  key={pizza.id}
+                  className="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg transition-all duration-200 flex items-center gap-4 p-4"
+                >
+                  <div className="w-20 h-20 shrink-0 relative rounded-full overflow-hidden shadow-md">
+                    <Image src={pizza.image} alt={pizza.name} fill className="object-cover" />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <h4 className="text-base font-bold text-gray-900 truncate mb-1">{pizza.name}</h4>
+                    <p className="text-gray-500 text-xs leading-snug line-clamp-2 mb-2">{pizza.description}</p>
+                    <div className="flex items-center gap-2">
+                      <span className="text-lg font-extrabold text-yellow-500" style={{ textShadow: "0 1px 3px rgba(0,0,0,.25)" }}>
+                        {pizza.price}
+                      </span>
+                      <Link
+                        href={createWhatsAppMessage(pizza.name, pizza.price)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="ml-auto shrink-0 bg-[#029264] text-white px-3 py-1.5 rounded-lg hover:bg-[#027a54] transition-colors text-xs font-semibold"
+                      >
+                        Pedir
+                      </Link>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          */}
         </div>
       </section>
 
@@ -411,6 +428,45 @@ export default function Home() {
 
       {/* Sedes con Google Maps */}
       <LocationsSection />
+
+      {/* Conoce al Chef */}
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-10">
+            <h3 className="text-3xl font-bold text-gray-900 mb-3">
+              👨‍🍳 Conoce al Chef
+            </h3>
+            <p className="text-gray-500 text-sm">
+              La persona detrás de cada sabor
+            </p>
+          </div>
+
+          <div className="flex flex-col md:flex-row items-center gap-8 bg-white rounded-2xl shadow-md p-8">
+            <div className="relative w-48 h-48 shrink-0 rounded-full overflow-hidden shadow-lg ring-4 ring-emerald-100">
+              <Image
+                src="https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/cheff.jpeg"
+                alt="Chef Saboreos Pizza"
+                fill
+                className="object-cover"
+              />
+            </div>
+
+            <div className="flex-1 text-center md:text-left">
+              <h4 className="text-2xl font-bold text-gray-900 mb-2">
+                El Chef de Saboreos
+              </h4>
+              <p className="text-emerald-600 font-medium mb-4 text-sm">
+                Fundador · Chef Principal · Instructor
+              </p>
+              {/* Reemplaza este texto con la descripción real del chef */}
+              <p className="text-gray-600 leading-relaxed">
+                Escribe aquí la descripción del chef: su historia, su pasión
+                por la cocina, su experiencia y lo que lo hace especial.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
       <Footer />
 

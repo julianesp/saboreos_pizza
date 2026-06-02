@@ -2,6 +2,7 @@
 
 import { MapPin, Clock, Phone } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 const locations = [
   {
@@ -11,6 +12,7 @@ const locations = [
     city: "Colón, Putumayo",
     hours: "Martes - Domingo: 4:00 p.m - 11:00 p.m",
     phone: "+57 312-394-6614",
+    photo: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/5.jpeg",
     // Coordenadas de Colón, Putumayo
     mapsEmbedUrl:
       "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3984.7!2d-76.9805!3d1.1843!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMcKwMTEnMDMuNSJOIDc2wrA1OCc1MC44Ilc!5e0!3m2!1ses!2sco!4v1699999999",
@@ -19,6 +21,7 @@ const locations = [
   },
   {
     id: "sibundoy",
+    photo: undefined,
     name: "Sede Sibundoy",
     address: "Al lado de Comfamiliar",
     city: "Sibundoy, Barrio Castelvi, Putumayo",
@@ -107,6 +110,18 @@ export default function LocationsSection() {
                   Cómo llegar
                 </Link>
               </div>
+
+              {/* Foto del local — solo sede Colón */}
+              {loc.photo && (
+                <div className="relative w-full h-48 overflow-hidden">
+                  <Image
+                    src={loc.photo}
+                    alt={`Local ${loc.name}`}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+              )}
             </div>
           ))}
         </div>
