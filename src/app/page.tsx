@@ -94,27 +94,153 @@ const chefRecommendation = {
 
 // Promo carousel images (R2 Cloudflare) — datos reales del menú
 const promoImages = [
-  { src: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/pizzas/1.jpeg",  alt: "Hawaiana",               name: "Hawaiana",               description: "Jamón y piña caramelizada.",                              price: "Desde $25.000" },
-  { src: "https://media.saboreospizza.com/pizzas/2.jpeg",                        alt: "Pepperoni",              name: "Pepperoni",              description: "Clásica y deliciosa.",                                    price: "Desde $25.000" },
-  { src: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/pizzas/3.jpeg",  alt: "Pollo con Champiñones",  name: "Pollo con Champiñones",  description: "Cremosa y sabrosa.",                                      price: "Desde $25.000" },
-  { src: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/pizzas/4.jpeg",  alt: "Pollo y Jamón",          name: "Pollo y Jamón",          description: "Una combinación suave y tradicional.",                    price: "Desde $25.000" },
-  { src: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/pizzas/5.jpeg",  alt: "Pollo y Piña",           name: "Pollo y Piña",           description: "El balance perfecto entre dulce y salado.",              price: "Desde $25.000" },
-  { src: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/pizzas/6.jpeg",  alt: "Carnes Mixtas",          name: "Carnes Mixtas",          description: "Res, pollo desmechado, jamón y salchicha.",              price: "Desde $25.000" },
-  { src: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/pizzas/7.jpeg",  alt: "Pollo y Maíz",           name: "Pollo y Maíz",           description: "Suavecita y dorada.",                                     price: "Desde $25.000" },
-  { src: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/pizzas/8.jpeg",  alt: "Tocineta con Maíz",      name: "Tocineta con Maíz",      description: "Crocante y deliciosa.",                                   price: "Desde $25.000" },
-  { src: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/pizzas/9.jpeg",  alt: "Chorizo y Jamón",        name: "Chorizo, Salchicha y Jamón", description: "Bien cargada de sabor.",                             price: "Desde $25.000" },
-  { src: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/pizzas/10.jpeg", alt: "Vegetariana",            name: "Vegetariana",            description: "Tomate, cebolla, maíz, champiñones y pimentón.",          price: "Desde $25.000" },
-  { src: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/pizzas/11.jpeg", alt: "Mexicana",               name: "Mexicana 🌶️",           description: "Carne molida, ají, maíz y pimentón rojo. ¡Picante!",     price: "Desde $25.000" },
-  { src: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/pizzas/12.jpeg", alt: "Napolitana",             name: "Napolitana",             description: "Tomates frescos con finas hierbas.",                      price: "Desde $25.000" },
-  { src: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/pizzas/13.jpeg", alt: "Tropical",               name: "Tropical",               description: "Durazno, cereza, piña y uvas pasas.",                     price: "Desde $25.000" },
-  { src: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/pizzas/14.jpeg", alt: "Pizza Familiar",         name: "Pizza Familiar",         description: "50cm · 16 porciones. La más grande para compartir.",     price: "$55.000" },
-  { src: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/pizzas/15.jpeg", alt: "Pizza Mediana",          name: "Pizza Mediana",          description: "35cm · 8 porciones. Perfecta para 2–3 personas.",        price: "$35.000" },
-  { src: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/pizzas/16.jpeg", alt: "Pizza Grande",           name: "Pizza Grande",           description: "40cm · 12 porciones. Ideal para grupos.",                price: "$45.000" },
-  { src: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/pizzas/17.jpeg", alt: "Extra Queso",            name: "Extra Queso ⭐",         description: "Agrégale más queso a cualquier pizza. ¡Vale la pena!",   price: "+$7.000 / +$11.000" },
-  { src: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/pizzas/18.jpeg", alt: "Pizza Pequeña",          name: "Pizza Pequeña",          description: "26cm · 4 porciones. Ideal para 1 persona.",              price: "$25.000" },
-  { src: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/pizzas/19.jpeg", alt: "Saboreos Pizza",         name: "¡Pide a Domicilio!",     description: "Entregamos tu pizza favorita directamente en tu puerta.", price: "Consultar" },
-  { src: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/pizzas/20.jpeg", alt: "Saboreos Pizza",         name: "Saboreos Pizza",         description: "Masa artesanal, ingredientes frescos y mucho sabor.",     price: "Desde $25.000" },
-  { src: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/pizzas/21.jpeg", alt: "Saboreos Pizza",         name: "Tu Pizza, Tu Tamaño",    description: "Pequeña · Mediana · Grande · Familiar. ¡Tú eliges!",    price: "Desde $25.000" },
+  {
+    src: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/pizzas/1.jpeg",
+    alt: "Hawaiana",
+    name: "Hawaiana",
+    description: "Jamón y piña caramelizada.",
+    price: "Desde $25.000",
+  },
+  {
+    src: "https://media.saboreospizza.com/pizzas/2.jpeg",
+    alt: "Pepperoni",
+    name: "Pepperoni",
+    description: "Clásica y deliciosa.",
+    price: "Desde $25.000",
+  },
+  {
+    src: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/pizzas/3.jpeg",
+    alt: "Pollo con Champiñones",
+    name: "Pollo con Champiñones",
+    description: "Cremosa y sabrosa.",
+    price: "Desde $25.000",
+  },
+  {
+    src: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/pizzas/4.jpeg",
+    alt: "Pollo y Jamón",
+    name: "Pollo y Jamón",
+    description: "Una combinación suave y tradicional.",
+    price: "Desde $25.000",
+  },
+  {
+    src: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/pizzas/5.jpeg",
+    alt: "Pollo y Piña",
+    name: "Pollo y Piña",
+    description: "El balance perfecto entre dulce y salado.",
+    price: "Desde $25.000",
+  },
+  {
+    src: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/pizzas/6.jpeg",
+    alt: "Carnes Mixtas",
+    name: "Carnes Mixtas",
+    description: "Res, pollo desmechado, jamón y salchicha.",
+    price: "Desde $25.000",
+  },
+  {
+    src: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/pizzas/7.jpeg",
+    alt: "Pollo y Maíz",
+    name: "Pollo y Maíz",
+    description: "Suavecita y dorada.",
+    price: "Desde $25.000",
+  },
+  {
+    src: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/pizzas/8.jpeg",
+    alt: "Tocineta con Maíz",
+    name: "Tocineta con Maíz",
+    description: "Crocante y deliciosa.",
+    price: "Desde $25.000",
+  },
+  {
+    src: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/pizzas/9.jpeg",
+    alt: "Chorizo y Jamón",
+    name: "Chorizo, Salchicha y Jamón",
+    description: "Bien cargada de sabor.",
+    price: "Desde $25.000",
+  },
+  {
+    src: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/pizzas/10.jpeg",
+    alt: "Vegetariana",
+    name: "Vegetariana",
+    description: "Tomate, cebolla, maíz, champiñones y pimentón.",
+    price: "Desde $25.000",
+  },
+  {
+    src: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/pizzas/11.jpeg",
+    alt: "Mexicana",
+    name: "Mexicana 🌶️",
+    description: "Carne molida, ají, maíz y pimentón rojo. ¡Picante!",
+    price: "Desde $25.000",
+  },
+  {
+    src: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/pizzas/12.jpeg",
+    alt: "Napolitana",
+    name: "Napolitana",
+    description: "Tomates frescos con finas hierbas.",
+    price: "Desde $25.000",
+  },
+  {
+    src: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/pizzas/13.jpeg",
+    alt: "Tropical",
+    name: "Tropical",
+    description: "Durazno, cereza, piña y uvas pasas.",
+    price: "Desde $25.000",
+  },
+  {
+    src: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/pizzas/14.jpeg",
+    alt: "Pizza Familiar",
+    name: "Pizza Familiar",
+    description: "50cm · 16 porciones. La más grande para compartir.",
+    price: "$55.000",
+  },
+  {
+    src: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/pizzas/15.jpeg",
+    alt: "Pizza Mediana",
+    name: "Pizza Mediana",
+    description: "35cm · 8 porciones. Perfecta para 2–3 personas.",
+    price: "$35.000",
+  },
+  {
+    src: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/pizzas/16.jpeg",
+    alt: "Pizza Grande",
+    name: "Pizza Grande",
+    description: "40cm · 12 porciones. Ideal para grupos.",
+    price: "$45.000",
+  },
+  {
+    src: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/pizzas/17.jpeg",
+    alt: "Extra Queso",
+    name: "Extra Queso ⭐",
+    description: "Agrégale más queso a cualquier pizza. ¡Vale la pena!",
+    price: "+$7.000 / +$11.000",
+  },
+  {
+    src: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/pizzas/18.jpeg",
+    alt: "Pizza Pequeña",
+    name: "Pizza Pequeña",
+    description: "26cm · 4 porciones. Ideal para 1 persona.",
+    price: "$25.000",
+  },
+  {
+    src: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/pizzas/19.jpeg",
+    alt: "Saboreos Pizza",
+    name: "¡Pide a Domicilio!",
+    description: "Entregamos tu pizza favorita directamente en tu puerta.",
+    price: "Consultar",
+  },
+  {
+    src: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/pizzas/20.jpeg",
+    alt: "Saboreos Pizza",
+    name: "Saboreos Pizza",
+    description: "Masa artesanal, ingredientes frescos y mucho sabor.",
+    price: "Desde $25.000",
+  },
+  {
+    src: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/pizzas/21.jpeg",
+    alt: "Saboreos Pizza",
+    name: "Tu Pizza, Tu Tamaño",
+    description: "Pequeña · Mediana · Grande · Familiar. ¡Tú eliges!",
+    price: "Desde $25.000",
+  },
 ];
 
 // Marquee belt items
@@ -124,7 +250,8 @@ const marqueeItems: MarqueeItem[] = [
     labelColor: "text-[#029264]",
     bg: "bg-white",
     border: "border border-[#029264]",
-    image: "https://0dwas2ied3dcs14f.public.blob.vercel-storage.com/saboreos/preparados/comidas_1.jpg",
+    image:
+      "https://0dwas2ied3dcs14f.public.blob.vercel-storage.com/saboreos/preparados/comidas_1.jpg",
     name: mostPopular.name,
     description: mostPopular.description,
     price: mostPopular.price,
@@ -135,7 +262,8 @@ const marqueeItems: MarqueeItem[] = [
     labelColor: "text-orange-500",
     bg: "bg-orange-50",
     border: "border border-orange-200",
-    image: "https://0dwas2ied3dcs14f.public.blob.vercel-storage.com/saboreos/preparados/comidas_1.jpg",
+    image:
+      "https://0dwas2ied3dcs14f.public.blob.vercel-storage.com/saboreos/preparados/comidas_1.jpg",
     name: pizzaOfTheDay.name,
     description: pizzaOfTheDay.description,
     price: pizzaOfTheDay.price,
@@ -146,7 +274,8 @@ const marqueeItems: MarqueeItem[] = [
     labelColor: "text-red-500",
     bg: "bg-red-50",
     border: "border border-red-200",
-    image: "https://0dwas2ied3dcs14f.public.blob.vercel-storage.com/saboreos/preparados/comidas_1.jpg",
+    image:
+      "https://0dwas2ied3dcs14f.public.blob.vercel-storage.com/saboreos/preparados/comidas_1.jpg",
     name: specialOffer.name,
     description: specialOffer.description,
     price: specialOffer.price,
@@ -158,7 +287,8 @@ const marqueeItems: MarqueeItem[] = [
     labelColor: "text-purple-500",
     bg: "bg-purple-50",
     border: "border border-purple-200",
-    image: "https://0dwas2ied3dcs14f.public.blob.vercel-storage.com/saboreos/preparados/comidas_1.jpg",
+    image:
+      "https://0dwas2ied3dcs14f.public.blob.vercel-storage.com/saboreos/preparados/comidas_1.jpg",
     name: chefRecommendation.name,
     description: chefRecommendation.description,
     price: chefRecommendation.price,
@@ -185,24 +315,96 @@ const imageCategories = {
 
 // Food menu items data
 const foodMenuItems = [
-  { id: 1,  name: "Clásica Saboreos",              url: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/other_foods/1.jpeg" },
-  { id: 2,  name: "Lasaña",                         url: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/other_foods/2.jpeg" },
-  { id: 4,  name: "Lasaña",                         url: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/other_foods/4.jpeg" },
-  { id: 5,  name: "Salchipapa",                     url: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/other_foods/5.jpeg" },
-  { id: 6,  name: "Salchipapa Clásica Saboreos",    url: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/other_foods/6.jpeg" },
-  { id: 7,  name: "Picada",                         url: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/other_foods/7.jpeg" },
-  { id: 8,  name: "Salchipapa Clásica Saboreos",    url: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/other_foods/8.jpeg" },
-  { id: 9,  name: "Salchipapa Clásica Saboreos",    url: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/other_foods/9.jpeg" },
-  { id: 10, name: "Alitas",                         url: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/other_foods/10.jpeg" },
-  { id: 11, name: "Lasaña",                         url: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/other_foods/11.jpeg" },
-  { id: 12, name: "Sandwich con Papa",              url: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/other_foods/12.jpeg" },
-  { id: 13, name: "Picada Carne Papa Patacón",      url: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/other_foods/13.jpeg" },
-  { id: 15, name: "Salchipapa Clásica Saboreos",    url: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/other_foods/15.jpeg" },
-  { id: 16, name: "Salchipapa",                     url: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/other_foods/16.jpeg" },
-  { id: 20, name: "Salchipapa",                     url: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/other_foods/20.jpeg" },
-  { id: 22, name: "Pechuga a la Plancha",           url: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/foods/comidas_2.jpg" },
-  { id: 23, name: "Carne de Cerdo a la Parrilla",   url: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/foods/comidas_3.jpg" },
-  { id: 24, name: "Parrilla Mixta al Carbón",       url: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/foods/comidas_4.jpg" },
+  {
+    id: 1,
+    name: "Clásica Saboreos",
+    url: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/other_foods/1.jpeg",
+  },
+  {
+    id: 2,
+    name: "Lasaña",
+    url: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/other_foods/2.jpeg",
+  },
+  {
+    id: 4,
+    name: "Lasaña",
+    url: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/other_foods/4.jpeg",
+  },
+  {
+    id: 5,
+    name: "Salchipapa",
+    url: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/other_foods/5.jpeg",
+  },
+  {
+    id: 6,
+    name: "Salchipapa Clásica Saboreos",
+    url: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/other_foods/6.jpeg",
+  },
+  {
+    id: 7,
+    name: "Picada",
+    url: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/other_foods/7.jpeg",
+  },
+  {
+    id: 8,
+    name: "Salchipapa Clásica Saboreos",
+    url: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/other_foods/8.jpeg",
+  },
+  {
+    id: 9,
+    name: "Salchipapa Clásica Saboreos",
+    url: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/other_foods/9.jpeg",
+  },
+  {
+    id: 10,
+    name: "Alitas",
+    url: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/other_foods/10.jpeg",
+  },
+  {
+    id: 11,
+    name: "Lasaña",
+    url: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/other_foods/11.jpeg",
+  },
+  {
+    id: 12,
+    name: "Sandwich con Papa",
+    url: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/other_foods/12.jpeg",
+  },
+  {
+    id: 13,
+    name: "Picada Carne Papa Patacón",
+    url: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/other_foods/13.jpeg",
+  },
+  {
+    id: 15,
+    name: "Salchipapa Clásica Saboreos",
+    url: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/other_foods/15.jpeg",
+  },
+  {
+    id: 16,
+    name: "Salchipapa",
+    url: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/other_foods/16.jpeg",
+  },
+  {
+    id: 20,
+    name: "Salchipapa",
+    url: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/other_foods/20.jpeg",
+  },
+  {
+    id: 22,
+    name: "Pechuga a la Plancha",
+    url: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/foods/comidas_2.jpg",
+  },
+  {
+    id: 23,
+    name: "Carne de Cerdo a la Parrilla",
+    url: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/foods/comidas_3.jpg",
+  },
+  {
+    id: 24,
+    name: "Parrilla Mixta al Carbón",
+    url: "https://pub-2f281a1b18194582a64434d6846baf97.r2.dev/foods/comidas_4.jpg",
+  },
 ];
 
 export default function Home() {
@@ -244,7 +446,10 @@ export default function Home() {
           </a> */}
         </div>
 
-        <div id="especialidades" className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div
+          id="especialidades"
+          className="grid grid-cols-1 md:grid-cols-2 gap-4"
+        >
           <ImageSlider
             images={imageCategories.pizza}
             category="pizza"
@@ -261,7 +466,112 @@ export default function Home() {
       </section>
 
       <section className="w-full overflow-hidden bg-[#029264]/80 backdrop-blur-sm">
-        <MarqueeCards items={marqueeItems} speed={55} />
+        {/* <MarqueeCards items={marqueeItems} speed={55} /> */}
+      </section>
+
+      {/* Envíos a Domicilio */}
+      <section className="relative py-10 px-4 sm:px-6 lg:px-8 overflow-hidden bg-[#029264]">
+        {/* Círculos decorativos de fondo */}
+        <div className="pointer-events-none absolute -top-24 -left-24 w-96 h-96 rounded-full bg-white/5" />
+        <div className="pointer-events-none absolute -bottom-32 -right-20 w-md h-112 rounded-full bg-white/5" />
+        <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-240 h-240 rounded-full bg-white/3" />
+
+        <div className="relative max-w-5xl mx-auto">
+          {/* Encabezado */}
+          <div className="text-center mb-14">
+            <span className="inline-block bg-white/15 text-white text-2xl font-semibold tracking-widest uppercase px-4 py-1.5 rounded-full mb-5">
+              Servicio a domicilio
+            </span>
+            <h2 className="text-4xl sm:text-5xl font-extrabold text-white leading-tight mb-4">
+              Tu pizza favorita,
+              <br className="hidden sm:block" /> directo a tu puerta
+            </h2>
+            <p className="text-white text-lg max-w-xl mx-auto">
+              Pide por WhatsApp y nosotros nos encargamos del resto. Rápido,
+              fácil y sin salir de casa.
+            </p>
+          </div>
+
+          {/* Pasos */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-14">
+            {[
+              {
+                step: "01",
+                icon: "📱",
+                title: "Elige tu pizza",
+                desc: "Explora el menú y elige tu combinación favorita.",
+              },
+              {
+                step: "02",
+                icon: "💬",
+                title: "Pide por WhatsApp",
+                desc: "Escríbenos con tu pedido y dirección.",
+              },
+              {
+                step: "03",
+                icon: "🏍️",
+                title: "¡Llega a tu casa!",
+                desc: "Preparamos tu pizza artesanal y la enviamos caliente.",
+              },
+            ].map(({ step, icon, title, desc }) => (
+              <div
+                key={step}
+                className="relative bg-white/10 backdrop-blur-sm rounded-2xl p-7 border border-white flex flex-col items-start gap-3 hover:bg-white/15 transition-colors duration-200"
+              >
+                <span className="absolute top-5 right-5 text-white text-5xl font-black leading-none select-none">
+                  {step}
+                </span>
+                <span className="text-3xl">{icon}</span>
+                <h4 className="text-white font-bold text-lg">{title}</h4>
+                <p className="text-white text-sm leading-relaxed">{desc}</p>
+              </div>
+            ))}
+          </div>
+
+          {/* Zonas de cobertura */}
+          <div className="bg-white/10 border border-white/20 rounded-2xl px-8 py-7 flex flex-col sm:flex-row items-center gap-6 mb-10">
+            <div className="text-4xl shrink-0">📍</div>
+            <div className="flex-1 text-center sm:text-left">
+              <p className="text-white font-semibold text-base mb-1">
+                Zonas de cobertura
+              </p>
+              <p className="text-white text-sm">
+                Santiago · Colón · San Pedro · Sibundoy · San Francisco
+              </p>
+            </div>
+            <div className="shrink-0 flex items-center gap-2 bg-white/15 rounded-xl px-5 py-3">
+              <span className="text-xl">⏱️</span>
+              <div>
+                <p className="text-white font-bold text-sm leading-none">
+                  Entrega rápida
+                </p>
+                <p className="text-white/60 text-xs mt-0.5">en tu zona</p>
+              </div>
+            </div>
+          </div>
+
+          {/* CTA */}
+          <div className="text-center">
+            {/* <Link
+              href={`https://wa.me/3123946614?text=${encodeURIComponent("¡Hola! Me gustaría hacer un pedido a domicilio. ¿Podrían ayudarme?")}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 bg-white text-[#029264] font-bold text-lg px-10 py-4 rounded-2xl shadow-xl hover:shadow-2xl hover:scale-105 active:scale-95 transition-all duration-200"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                className="w-6 h-6 fill-[#029264]"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+              </svg>
+              Pedir a domicilio
+            </Link> */}
+            <p className="text-white/50 text-xs mt-4">
+              Atención por WhatsApp · Martes a domingo
+            </p>
+          </div>
+        </div>
       </section>
 
       {/* Pizzas Destacadas */}
@@ -467,8 +777,8 @@ export default function Home() {
 
           {/* Reemplaza este texto con la descripción real del chef */}
           <p className="text-white/70 leading-relaxed max-w-xl mx-auto">
-            Escribe aquí la descripción del chef: su historia, su pasión
-            por la cocina, su experiencia y lo que lo hace especial.
+            Escribe aquí la descripción del chef: su historia, su pasión por la
+            cocina, su experiencia y lo que lo hace especial.
           </p>
         </div>
       </section>

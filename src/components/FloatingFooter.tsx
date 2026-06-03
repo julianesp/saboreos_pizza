@@ -98,7 +98,7 @@ const FloatingFooter = () => {
       <button
         ref={flechaRef}
         onClick={switchOptions}
-        className="fixed bottom-4 left-4 w-14 h-14 bg-emerald-600 hover:bg-emerald-700 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 z-50 flex items-center justify-center group cursor-pointer"
+        className="fixed bottom-4 left-4 w-11 h-11 bg-emerald-600 hover:bg-emerald-700 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 z-50 flex items-center justify-center group cursor-pointer"
         aria-label="Abrir redes sociales"
       >
         <svg
@@ -107,7 +107,7 @@ const FloatingFooter = () => {
           viewBox="0 0 24 24"
           strokeWidth="1.5"
           stroke="currentColor"
-          className={`h-6 w-6 transition-transform duration-300 ${
+          className={`h-5 w-5 transition-transform duration-300 ${
             menuOption ? "rotate-45" : ""
           }`}
         >
