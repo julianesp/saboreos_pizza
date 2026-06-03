@@ -426,7 +426,7 @@ export default function Home() {
         />
       </div>
 
-      <section id="inicio" className="py-6 px-4 sm:px-6 lg:px-8">
+      <section id="inicio" className="pt-20 pb-6 px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto text-center ">
           <h2 className="text-5xl font-bold text-gray-900 mb-6">
             Bienvenido a{" "}

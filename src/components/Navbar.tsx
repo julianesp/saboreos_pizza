@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { ChevronDown, Moon, Sun } from "lucide-react";
 import { useTheme } from "./ThemeProvider";
 import { generalWhatsAppMessage } from "../utils/whatsapp";
@@ -24,11 +24,6 @@ const Navbar = () => {
     }
     setIsMobileMenuOpen((prev) => !prev);
   };
-  const navRef = useRef<HTMLDivElement>(null);
-
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
-  };
 
   // Cerrar menú al hacer clic fuera
   // useEffect(() => {
@@ -49,35 +44,6 @@ const Navbar = () => {
   //   };
   // }, [isMobileMenuOpen]);
 
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent | TouchEvent) => {
-      if (navRef.current && !navRef.current.contains(event.target as Node)) {
-        setIsMobileMenuOpen(false);
-      }
-    };
-
-    if (isMobileMenuOpen) {
-      document.addEventListener(
-        "mousedown",
-        handleClickOutside as EventListener,
-      );
-      document.addEventListener(
-        "touchstart",
-        handleClickOutside as EventListener,
-      );
-    }
-
-    return () => {
-      document.removeEventListener(
-        "mousedown",
-        handleClickOutside as EventListener,
-      );
-      document.removeEventListener(
-        "touchstart",
-        handleClickOutside as EventListener,
-      );
-    };
-  }, [isMobileMenuOpen]);
 
   const handleSmoothScroll = (
     e: React.MouseEvent<HTMLAnchorElement>,
@@ -132,7 +98,6 @@ const Navbar = () => {
   return (
     <>
       <nav
-        ref={navRef}
         className={`z-40 fixed w-full h-14 backdrop-blur-md bg-white/60 ${styles.navbar}`}
       >
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-10">
@@ -309,7 +274,16 @@ const Navbar = () => {
                   setIsMobileMenuOpen(false);
                   setTimeout(() => {
                     const el = document.getElementById(id);
-                    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+                    if (!el) return;
+                    const alreadyVisible = el.getBoundingClientRect().top >= 0 &&
+                      el.getBoundingClientRect().top <= window.innerHeight;
+                    el.scrollIntoView({ behavior: "smooth", block: "start" });
+                    if (!alreadyVisible) {
+                      setTimeout(() => {
+                        el.classList.add("buzz");
+                        el.addEventListener("animationend", () => el.classList.remove("buzz"), { once: true });
+                      }, 800);
+                    }
                   }, 50);
                 }}
                 style={{ transitionDelay: `${i * 60}ms` }}
